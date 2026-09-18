@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taim: thoughts into motion</title>
+    <meta
+      name="description"
+      content="Taim turns rough thoughts, notes, reminders, and calendar context into organized threads, tasks, follow-ups, and action."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=DM+Sans:wght@400;500;700&family=Indie+Flower&family=Lora:ital,wght@0,500;0,600;1,500&family=Nothing+You+Could+Do&family=Reenie+Beanie&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-row">
+        <a class="brand" href="#top" aria-label="Taim home">
+          <span class="brand-mark">T</span>
+          <span>Taim</span>
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="#product">Product</a>
+          <a href="#uses">Use cases</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a
+          class="btn btn-ink"
+          href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+          >Download</a
+        >
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="intro-section">
+        <div class="container intro-grid">
+          <div class="intro-copy">
+            <p class="eyebrow">A calmer place for thoughts and plans</p>
+            <h1>Taim</h1>
+            <p class="intro-lede">
+              Taim keeps the loose ends of your day in one place. Voice notes,
+              reminders, plans, and follow-ups stay connected without turning
+              into a system you have to manage.
+            </p>
+            <div class="intro-actions">
+              <a
+                class="btn btn-ink"
+                href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+                >Get the app</a
+              >
+              <a class="btn btn-paper" href="#product">How it works</a>
+            </div>
+            <p class="hand-note">for the thought you almost forgot</p>
+          </div>
+
+          <div class="desk-scene" aria-label="Taim product preview">
+            <img
+              class="brand-texture"
+              src="assets/taim-og.png"
+              alt="Taim symbol on dark textured surface"
+            />
+            <div class="phone-shell">
+              <div class="phone-status">
+                <span>9:41</span>
+                <span>Taim</span>
+              </div>
+              <div class="capture-card">
+                <p class="capture-label">Captured</p>
+                <p>
+                  book Amsterdam flights, mom visits next month, reply to
+                  recruiter, knee still sore after runs
+                </p>
+              </div>
+              <div class="thread-card">
+                <span class="thread-dot travel"></span>
+                <div>
+                  <strong>Trip to Amsterdam</strong>
+                  <p>Flight task created. Calendar hold suggested.</p>
+                </div>
+              </div>
+              <div class="thread-card">
+                <span class="thread-dot home"></span>
+                <div>
+                  <strong>Life admin</strong>
+                  <p>Fix sink before mom arrives. Reminder ready.</p>
+                </div>
+              </div>
+              <div class="thread-card">
+                <span class="thread-dot health"></span>
+                <div>
+                  <strong>Running</strong>
+                  <p>Pattern noticed: knee mentioned 3 times.</p>
+                </div>
+              </div>
+            </div>
+            <div class="paper-slip slip-one">not another inbox</div>
+            <div class="paper-slip slip-two">action, not anxiety</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="product" class="loop-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">How it works</p>
+            <h2>One note, then the thread keeps going.</h2>
+            <p>
+              Taim does not expect you to be more organized. It catches the way
+              life already arrives and keeps the important details connected.
+            </p>
+          </div>
+
+          <div class="loop-grid">
+            <article class="loop-step">
+              <span>01</span>
+              <h3>Capture the real thought</h3>
+              <p>
+                Speak or type like a person: fragmented, emotional, unfinished.
+                Taim keeps the important pieces without forcing a form.
+              </p>
+            </article>
+            <article class="loop-step">
+              <span>02</span>
+              <h3>Sort it into life topics</h3>
+              <p>
+                Trips, friends, work, health, family, ideas. A thread becomes
+                the living place where notes, tasks, and context stay together.
+              </p>
+            </article>
+            <article class="loop-step">
+              <span>03</span>
+              <h3>Turn it into motion</h3>
+              <p>
+                A reminder, a calendar hold, a message draft, a task, a
+                check-in. The next useful action appears where it belongs.
+              </p>
+            </article>
+            <article class="loop-step">
+              <span>04</span>
+              <h3>Notice what repeats</h3>
+              <p>
+                When the same signal keeps returning, Taim can nudge you gently
+                before the pattern becomes another thing you carry alone.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="transform-section">
+        <div class="container transform-grid">
+          <div class="transform-copy">
+            <p class="eyebrow">Try the tiny demo</p>
+            <h2>One messy sentence can become the right kind of object.</h2>
+            <p>
+              Type a thought below. The demo is intentionally simple, but the
+              interaction makes the promise clear: Taim knows the difference
+              between a note, a task, a calendar moment, and something worth
+              following up.
+            </p>
+          </div>
+
+          <div class="demo-panel">
+            <label for="demoInput">What is on your mind?</label>
+            <input
+              id="demoInput"
+              type="text"
+              placeholder="coffee with Sarah next Tuesday morning"
+              autocomplete="off"
+            />
+            <div class="output-grid" aria-label="Detected outputs">
+              <div class="output-chip" data-key="action">
+                <span class="chip-icon">A</span>
+                <span>Action</span>
+              </div>
+              <div class="output-chip" data-key="meetup">
+                <span class="chip-icon">M</span>
+                <span>Meetup</span>
+              </div>
+              <div class="output-chip" data-key="calendar">
+                <span class="chip-icon">C</span>
+                <span>Calendar</span>
+              </div>
+              <div class="output-chip" data-key="todo">
+                <span class="chip-icon">T</span>
+                <span>To-do</span>
+              </div>
+              <div class="output-chip" data-key="file">
+                <span class="chip-icon">N</span>
+                <span>Note</span>
+              </div>
+            </div>
+            <p id="demoHint" class="demo-hint" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-section">
+        <div class="container proof-grid">
+          <div class="notes-stack">
+            <p class="stack-title">Before</p>
+            <div class="loose-note">send Lena contract</div>
+            <div class="loose-note">Amsterdam call back?</div>
+            <div class="loose-note">passport expires in Nov</div>
+            <div class="loose-note">dinner with Sarah next week</div>
+            <div class="loose-note">knee still sore</div>
+          </div>
+          <div class="thread-stack">
+            <p class="stack-title">With Taim</p>
+            <div class="organized-thread">
+              <strong>Quarterly Updates</strong>
+              <span>Task: send contract</span>
+              <span>Calendar: review deck Friday</span>
+            </div>
+            <div class="organized-thread">
+              <strong>Trip to Amsterdam</strong>
+              <span>Task: book flights</span>
+              <span>Memory: dates are flexible</span>
+            </div>
+            <div class="organized-thread">
+              <strong>Health</strong>
+              <span>Pattern: knee pain repeated</span>
+              <span>Suggested: book a physio</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="uses" class="use-section">
+        <div class="container use-grid">
+          <div>
+            <p class="eyebrow">Made for real days</p>
+            <h2>People use it differently</h2>
+            <p class="section-copy">
+              The same problem shows up in different ways. A creator loses
+              ideas, a founder misses follow-ups, and a busy person just wants
+              less friction.
+            </p>
+          </div>
+
+          <div class="use-tabs">
+            <div class="tab-buttons" role="tablist" aria-label="Taim use cases">
+              <button
+                class="tab-button active"
+                id="tab-creators"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="persona-panel"
+                data-persona="creators"
+              >
+                Creators
+              </button>
+              <button
+                class="tab-button"
+                id="tab-adhd"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="persona-panel"
+                data-persona="adhd"
+              >
+                ADHD
+              </button>
+              <button
+                class="tab-button"
+                id="tab-founders"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="persona-panel"
+                data-persona="founders"
+              >
+                Founders
+              </button>
+              <button
+                class="tab-button"
+                id="tab-corporate"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="persona-panel"
+                data-persona="corporate"
+              >
+                Corporate
+              </button>
+            </div>
+            <article
+              class="persona-card"
+              id="persona-panel"
+              role="tabpanel"
+              tabindex="0"
+              aria-labelledby="tab-creators"
+            >
+              <p class="persona-kicker">Taim for creators</p>
+              <h3>Catch ideas before they become ghosts.</h3>
+              <p>
+                Voice notes from walks, half-lines for scripts, sponsor
+                follow-ups, content ideas, launch chores. Taim keeps the
+                creative mess usable without making it sterile.
+              </p>
+              <ul>
+                <li>Turns raw idea dumps into project threads</li>
+                <li>Surfaces follow-ups when a draft is ready</li>
+                <li>Keeps references, tasks, and reminders together</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="pattern-section">
+        <div class="container pattern-grid">
+          <div>
+            <p class="eyebrow">Pattern noticing</p>
+            <h2>The small signal that keeps coming back.</h2>
+            <p class="section-copy">
+              A good assistant should not only store what you say. It should
+              notice when life is trying to tell you something.
+            </p>
+          </div>
+          <div class="pattern-board">
+            <div class="pattern-line muted">Mon: knee hurt after run</div>
+            <div class="pattern-line">Wed: skipped running again</div>
+            <div class="pattern-line">Fri: still sore, should do something</div>
+            <div class="pattern-nudge">
+              <strong>Pattern found</strong>
+              <p>
+                This came up three times. Want help booking a physio and moving
+                the next run?
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="connected-section">
+        <div class="container connected-grid">
+          <div>
+            <p class="eyebrow">Context travels</p>
+            <h2>Your Taim, wherever you think.</h2>
+            <p class="section-copy">
+              Taim supports MCP, the open standard that lets trusted assistants
+              read and write context with your permission. A plan made in one
+              workspace can land back in the same life thread.
+            </p>
+          </div>
+          <div class="mcp-card">
+            <p class="terminal-label">MCP endpoint</p>
+            <code>https://mcp.trytaim.com/mcp</code>
+            <div class="mcp-row">
+              <span>Threads</span>
+              <span>Memory</span>
+              <span>Tasks</span>
+              <span>Capture</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacy" class="privacy-section">
+        <div class="container privacy-grid">
+          <div>
+            <p class="eyebrow">Privacy</p>
+            <h2>Built to respect the parts of life that are personal.</h2>
+            <p class="section-copy">
+              Taim keeps context usable without turning your private life into
+              product data. The goal is simple trust.
+            </p>
+          </div>
+          <div class="privacy-list">
+            <article>
+              <h3>Audio is never stored</h3>
+              <p>
+                Voice is transcribed, then deleted. The recording is not kept
+                around.
+              </p>
+            </article>
+            <article>
+              <h3>Sensitive data is redacted</h3>
+              <p>
+                Card numbers, IDs, and credentials are stripped before model
+                processing.
+              </p>
+            </article>
+            <article>
+              <h3>No training on your life</h3>
+              <p>
+                Your thoughts, threads, and memories are not sold or used to
+                train models.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" class="pricing-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Pricing</p>
+            <h2>Start light. Grow into the assistant.</h2>
+            <p>
+              Simple pricing makes the product feel approachable. Final numbers
+              can move, but the shape should be easy to understand.
+            </p>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="plan-card">
+              <p class="plan-name">Free</p>
+              <p class="plan-price">$0</p>
+              <p class="plan-desc">For trying Taim in your real week.</p>
+              <ul>
+                <li>Unlimited capture</li>
+                <li>Basic threads</li>
+                <li>7 day memory</li>
+              </ul>
+              <a
+                class="btn btn-paper"
+                href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+                >Start free</a
+              >
+            </article>
+            <article class="plan-card featured">
+              <p class="plan-name">Personal</p>
+              <p class="plan-price">$12<span>/mo</span></p>
+              <p class="plan-desc">
+                For people who want Taim to remember and follow through.
+              </p>
+              <ul>
+                <li>Everything in Free</li>
+                <li>Long-term memory</li>
+                <li>Pattern noticing</li>
+                <li>MCP access</li>
+              </ul>
+              <a
+                class="btn btn-ink"
+                href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+                >Choose Personal</a
+              >
+            </article>
+            <article class="plan-card">
+              <p class="plan-name">Team</p>
+              <p class="plan-price">Soon</p>
+              <p class="plan-desc">
+                For small teams that want shared follow-through.
+              </p>
+              <ul>
+                <li>Shared threads</li>
+                <li>Admin controls</li>
+                <li>Priority support</li>
+              </ul>
+              <a class="btn btn-paper" href="mailto:hello@trytaim.com"
+                >Talk to us</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" class="faq-section">
+        <div class="container faq-grid">
+          <div>
+            <p class="eyebrow">FAQ</p>
+            <h2>Questions worth answering clearly.</h2>
+          </div>
+          <div class="faq-list">
+            <article class="faq-item open">
+              <button class="faq-question" type="button">
+                <span>Is Taim a to-do app?</span>
+                <span class="plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. A to-do app waits for you to organize your life. Taim
+                  captures context, creates tasks when they make sense, and
+                  keeps the thread alive.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Can I type instead of talking?</span>
+                <span class="plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  Yes. Voice is useful when thoughts arrive fast, but typing
+                  works just as well.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Does it replace my calendar?</span>
+                <span class="plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Taim works around your existing calendar and task tools so
+                  your plans do not live in another isolated place.
+                </p>
+              </div>
+            </article>
+            <article class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Is this medical support for ADHD?</span>
+                <span class="plus">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>
+                  No. Taim is not treatment or diagnosis. It can reduce sorting
+                  friction, but medical support should come from a qualified
+                  professional.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing-section">
+        <div class="container closing-card">
+          <p class="hand-note">it starts with one sentence</p>
+          <h2>Spend less time holding your life together by hand.</h2>
+          <a
+            class="btn btn-ink"
+            href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+            >Download Taim</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <span>&copy; 2026 Kyrosphere Inc.</span>
+        <div class="footer-links">
+          <a href="https://www.trytaim.com/">Website</a>
+          <a href="https://www.trytaim.com/blog">Blog</a>
+          <a href="https://www.instagram.com/trytaim/">Instagram</a>
+          <a href="mailto:hello@trytaim.com">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
