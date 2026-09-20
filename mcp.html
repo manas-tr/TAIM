@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Taim MCP Documentation : Connect your thoughts to AI</title>
+    <meta
+      name="description"
+      content="Connect Taim to your AI assistant. Set up the remote MCP server and explore all seven tools for threads, personal memories, and saving notes."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Reenie+Beanie&family=JetBrains+Mono:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/svg+xml" href="assets/taim-logo.svg" />
+    <style>
+      .mcp-page-hero {
+        padding-top: 50px;
+        padding-bottom: clamp(24px, 4vh, 40px);
+        text-align: center;
+        position: relative;
+        background: radial-gradient(
+          circle at 50% 10%,
+          rgba(184, 113, 74, 0.12) 0%,
+          transparent 65%
+        );
+      }
+
+      main {
+        padding-top: 61px;
+      }
+
+      .mcp-page-hero .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      .mcp-endpoint-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: #ffffff;
+        border: 1.5px solid rgba(184, 113, 74, 0.25);
+        border-radius: 999px;
+        padding: 8px 10px 8px 20px;
+        box-shadow: 0 8px 28px rgba(50, 35, 15, 0.07);
+        margin: 24px auto 0;
+        max-width: 100%;
+      }
+
+      .mcp-endpoint-url {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(12px, 1.4vw, 14.5px);
+        font-weight: 600;
+        color: var(--accent-warm);
+        letter-spacing: -0.01em;
+      }
+
+      .copy-btn {
+        background: var(--ink);
+        color: #ffffff;
+        border: none;
+        padding: 6px 14px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .copy-btn:hover {
+        background: var(--accent);
+        transform: translateY(-1px);
+      }
+
+      .copy-btn.copied {
+        background: #2e6840;
+      }
+
+      .mcp-doc-layout {
+        display: grid;
+        grid-template-columns: 240px 1fr;
+        gap: 48px;
+        max-width: var(--max-w);
+        margin: 0 auto;
+        padding: 24px clamp(20px, 4vw, 40px) 100px;
+      }
+
+      @media (max-width: 900px) {
+        .mcp-doc-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .mcp-doc-sidebar {
+          display: none;
+        }
+      }
+
+      .mcp-doc-sidebar {
+        position: sticky;
+        top: 100px;
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sidebar-group-title {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--ink-faint);
+        margin-bottom: 8px;
+      }
+
+      .sidebar-links {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .sidebar-link {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--ink-soft);
+        padding: 6px 10px;
+        border-radius: 8px;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .sidebar-link:hover {
+        color: var(--accent);
+        background: rgba(184, 113, 74, 0.06);
+      }
+
+      .sidebar-link.active {
+        color: var(--ink);
+        font-weight: 700;
+        background: #f4eee2;
+      }
+
+      .sidebar-badge {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 1px 6px;
+        border-radius: 999px;
+        background: rgba(50, 35, 15, 0.06);
+      }
+
+      .mcp-card {
+        background: #ffffff;
+        border: 1px solid var(--warm-line-mid);
+        border-radius: 20px;
+        padding: clamp(20px, 3.5vw, 32px);
+        margin-bottom: 32px;
+        box-shadow: var(--sh-card);
+      }
+
+      .mcp-card-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tool-name-tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(18px, 2.2vw, 24px);
+        font-weight: 700;
+        color: var(--ink);
+        letter-spacing: -0.03em;
+      }
+
+      .tool-kind-pill {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: 3px 10px;
+        border-radius: 999px;
+      }
+
+      .pill-read {
+        background: rgba(60, 120, 80, 0.1);
+        color: #2e6840;
+      }
+
+      .pill-write {
+        background: rgba(184, 113, 74, 0.12);
+        color: var(--accent-warm);
+      }
+
+      .code-block-wrap {
+        position: relative;
+        background: #181513;
+        border-radius: 14px;
+        padding: 16px 18px;
+        margin: 16px 0;
+        overflow-x: auto;
+      }
+
+      .code-block-wrap pre {
+        margin: 0;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        line-height: 1.6;
+        color: #f5f1ea;
+      }
+
+      .code-copy-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        padding: 4px 10px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .code-copy-btn:hover {
+        background: var(--accent);
+      }
+
+      .params-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13px;
+      }
+
+      .params-table th {
+        text-align: left;
+        padding: 8px 10px;
+        border-bottom: 1.5px solid var(--warm-line-mid);
+        color: var(--ink-faint);
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      .params-table td {
+        padding: 10px;
+        border-bottom: 1px solid var(--warm-line);
+        vertical-align: top;
+      }
+
+      .param-name {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .param-req {
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        color: #e04b28;
+        margin-left: 4px;
+      }
+    .mcp-doc-content section {
+      scroll-margin-top: 80px;
+    }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="nav-pill">
+        <a class="brand" href="index.html" aria-label="Taim home">
+          <img src="assets/taim-logo.svg" alt="Taim Logo" class="brand-logo" />
+          Taim
+        </a>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Overview</a>
+          <a href="index.html#how">How it works</a>
+          <a href="index.html#uses">Built for you</a>
+          <a href="mcp.html" class="active">MCP Protocol</a>
+          <a href="index.html#manifesto">Our Promise</a>
+        </nav>
+        <a
+          class="btn btn-dark"
+          href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+          id="nav-download-btn"
+        >
+          Download iOS
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="mcp-page-hero">
+        <div class="container narrow">
+          <span class="section-label reveal">Model Context Protocol</span>
+          <h1
+            class="persona-title reveal"
+            style="font-size: clamp(32px, 4.5vw, 56px)"
+          >
+            Connect your thoughts<br />
+            <em style="font-style: italic; color: var(--accent)"
+              >to any AI assistant.</em
+            >
+          </h1>
+          <p
+            class="persona-lede reveal"
+            style="max-width: 640px; margin: 16px auto 0"
+          >
+            Bring your Taim living threads and personal memories into Claude
+            Code, Cursor, Windsurf, or custom LLM agents. Find context when you
+            code, and save ideas the moment they strike.
+          </p>
+
+          <div class="mcp-endpoint-box reveal">
+            <span class="mcp-endpoint-url" id="endpointUrl"
+              >https://mcp.trytaim.com/mcp</span
+            >
+            <button class="copy-btn" id="copyEndpointBtn" type="button">
+              <span>Copy Endpoint</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- DOCUMENTATION LAYOUT -->
+      <div class="mcp-doc-layout">
+        <!-- SIDEBAR -->
+        <aside class="mcp-doc-sidebar">
+          <div>
+            <div class="sidebar-group-title">Getting Started</div>
+            <div class="sidebar-links">
+              <a href="#quickstart" class="sidebar-link active">Quickstart</a>
+              <a href="#authentication" class="sidebar-link"
+                >Auth &amp; Access</a
+              >
+            </div>
+          </div>
+
+          <div>
+            <div class="sidebar-group-title">
+              Read Tools <span class="sidebar-badge">5</span>
+            </div>
+            <div class="sidebar-links">
+              <a href="#list_threads" class="sidebar-link">list_threads</a>
+              <a href="#search_threads" class="sidebar-link">search_threads</a>
+              <a href="#get_thread" class="sidebar-link">get_thread</a>
+              <a href="#search_memories" class="sidebar-link"
+                >search_memories</a
+              >
+              <a href="#pull_context" class="sidebar-link">pull_context</a>
+            </div>
+          </div>
+
+          <div>
+            <div class="sidebar-group-title">
+              Write Tools <span class="sidebar-badge">2</span>
+            </div>
+            <div class="sidebar-links">
+              <a href="#create_thread" class="sidebar-link">create_thread</a>
+              <a href="#add_thread_entry" class="sidebar-link"
+                >add_thread_entry</a
+              >
+            </div>
+          </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="mcp-doc-content">
+          <!-- QUICKSTART -->
+          <section id="quickstart" class="mcp-card">
+            <div class="mcp-card-head">
+              <h2 style="font-size: 22px; font-weight: 800">
+                Quickstart Setup
+              </h2>
+              <span class="tool-kind-pill pill-read">Remote OAuth</span>
+            </div>
+            <p class="section-body" style="font-size: 14.5px">
+              Taim runs as a remote Streamable HTTP MCP server. No local
+              binaries or Python packages needed. Run the one-line setup in your
+              terminal:
+            </p>
+
+            <div class="code-block-wrap">
+              <button
+                class="code-copy-btn"
+                data-copy="claude mcp add --transport http taim https://mcp.trytaim.com/mcp"
+              >
+                Copy
+              </button>
+              <pre><code>claude mcp add --transport http taim https://mcp.trytaim.com/mcp</code></pre>
+            </div>
+
+            <p
+              style="
+                font-size: 13.5px;
+                color: var(--ink-soft);
+                margin-top: 12px;
+              "
+            >
+              Next, launch Claude Code and type <code>/mcp</code>. Select
+              <strong>taim</strong>, complete the browser sign-in with your Taim
+              account, and start asking:
+            </p>
+            <div
+              style="
+                background: #faf7f2;
+                border-left: 3px solid var(--accent);
+                padding: 10px 14px;
+                border-radius: 6px;
+                margin-top: 10px;
+                font-style: italic;
+                font-size: 13px;
+              "
+            >
+              "Use Taim to show my recent marketing ideas thread, then help me
+              draft the carousel script."
+            </div>
+          </section>
+
+          <!-- AUTHENTICATION -->
+          <section id="authentication" class="mcp-card">
+            <div class="mcp-card-head">
+              <h2 style="font-size: 20px; font-weight: 800">
+                Authentication &amp; Security
+              </h2>
+              <span class="tool-kind-pill pill-read">Non-destructive</span>
+            </div>
+            <p class="section-body" style="font-size: 14px; line-height: 1.6">
+              Sign in with your standard Taim account via OAuth 2.0. All 7 tools
+              are strictly non-destructive. There are no delete, archive, or
+              task destructive permissions exposed. You can disconnect at any
+              time from your client settings.
+            </p>
+          </section>
+
+          <!-- 1. list_threads -->
+          <section id="list_threads" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">list_threads</span>
+              <span class="tool-kind-pill pill-read">Read Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              List threads you own and threads shared with you, ordered by most
+              recent activity. Ideal for browsing or resolving thread IDs.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="param-name">limit</span></td>
+                  <td>integer</td>
+                  <td>Maximum threads to return (1–100, default: 20).</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">include_archived</span></td>
+                  <td>boolean</td>
+                  <td>Whether to include archived threads (default: false).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-block-wrap">
+              <button
+                class="code-copy-btn"
+                data-copy='{ "name": "list_threads", "arguments": { "limit": 5, "include_archived": false } }'
+              >
+                Copy
+              </button>
+              <pre><code>// Example Call
+{
+  "name": "list_threads",
+  "arguments": { "limit": 5, "include_archived": false }
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- 2. search_threads -->
+          <section id="search_threads" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">search_threads</span>
+              <span class="tool-kind-pill pill-read">Read Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Search owned and shared threads by meaning and keywords. Ask
+              natural-language questions even if you do not remember exact
+              thread titles.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="param-name">query</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>Natural language query or keywords.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">limit</span></td>
+                  <td>integer</td>
+                  <td>Maximum matching results (1–100).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-block-wrap">
+              <button
+                class="code-copy-btn"
+                data-copy='{ "name": "search_threads", "arguments": { "query": "What are our weekly goals?", "limit": 3 } }'
+              >
+                Copy
+              </button>
+              <pre><code>// Example Call
+{
+  "name": "search_threads",
+  "arguments": { "query": "What are our weekly goals?", "limit": 3 }
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- 3. get_thread -->
+          <section id="get_thread" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">get_thread</span>
+              <span class="tool-kind-pill pill-read">Read Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Read one thread with recent entries, open tasks, and
+              collaborators. Pass a thread ID obtained from
+              <code>list_threads</code> or <code>search_threads</code>.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="param-name">thread_id</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>UUID of the thread to retrieve.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">entry_limit</span></td>
+                  <td>integer</td>
+                  <td>Maximum entries to return (1–100).</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="code-block-wrap">
+              <button
+                class="code-copy-btn"
+                data-copy='{ "name": "get_thread", "arguments": { "thread_id": "0d19e8bf-6a5c-4c97-93f8-a20657e16b72", "entry_limit": 10 } }'
+              >
+                Copy
+              </button>
+              <pre><code>// Example Call
+{
+  "name": "get_thread",
+  "arguments": {
+    "thread_id": "0d19e8bf-6a5c-4c97-93f8-a20657e16b72",
+    "entry_limit": 10
+  }
+}</code></pre>
+            </div>
+          </section>
+
+          <!-- 4. search_memories -->
+          <section id="search_memories" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">search_memories</span>
+              <span class="tool-kind-pill pill-read">Read Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Search your personal Taim memory graph for facts, preferences, and
+              recurring context across conversations.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="param-name">query</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>Description of personal facts or recall items.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">limit</span></td>
+                  <td>integer</td>
+                  <td>Maximum results (1–50).</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- 5. pull_context -->
+          <section id="pull_context" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">pull_context</span>
+              <span class="tool-kind-pill pill-read">Read Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Single-call aggregator that searches threads and personal memories
+              simultaneously, returning a unified synthesized context window.
+            </p>
+          </section>
+
+          <!-- 6. create_thread -->
+          <section id="create_thread" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">create_thread</span>
+              <span class="tool-kind-pill pill-write">Write Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Create a new living thread in Taim with a title, category kind,
+              and optional initial note.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="param-name">title</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>Name of the new thread.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">thread_kind</span></td>
+                  <td>string</td>
+                  <td>Category (work, creative, travel, life, personal).</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">initial_content</span></td>
+                  <td>string</td>
+                  <td>Optional first entry or note.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <!-- 7. add_thread_entry -->
+          <section id="add_thread_entry" class="mcp-card">
+            <div class="mcp-card-head">
+              <span class="tool-name-tag">add_thread_entry</span>
+              <span class="tool-kind-pill pill-write">Write Tool</span>
+            </div>
+            <p
+              style="font-size: 14px; color: var(--ink-soft); line-height: 1.5"
+            >
+              Append a new note, decision, code snippet, or action item into an
+              existing thread.
+            </p>
+
+            <table class="params-table">
+              <thead>
+                <tr>
+                  <th>Parameter</th>
+                  <th>Type</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="param-name">thread_id</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>UUID of target thread.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="param-name">content</span
+                    ><span class="param-req">Required</span>
+                  </td>
+                  <td>string</td>
+                  <td>Markdown note content or task body.</td>
+                </tr>
+                <tr>
+                  <td><span class="param-name">title</span></td>
+                  <td>string</td>
+                  <td>Optional entry heading.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-top">
+            <div class="footer-brand-col">
+              <div class="footer-logo">
+                <img src="assets/taim-logo.svg" alt="Taim" />
+                Taim
+              </div>
+              <p class="footer-tagline hand">
+                your entry point for every thought
+              </p>
+              <a
+                class="footer-dl-btn"
+                href="https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821"
+              >
+                Download for iOS
+              </a>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-head">Use Cases</h4>
+              <ul>
+                <li><a href="designers.html">Taim for Creatives</a></li>
+                <li><a href="students.html">Taim for Students</a></li>
+                <li><a href="adhd.html">Taim for ADHD + Anxiety</a></li>
+                <li><a href="founders.html">Taim for Founders</a></li>
+                <li><a href="friends.html">Taim for Friends</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-head">Product</h4>
+              <ul>
+                <li><a href="index.html#how">Voice Capture</a></li>
+                <li><a href="index.html#how">Living Threads</a></li>
+                <li><a href="mcp.html">MCP Protocol</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-head">Privacy &amp; Trust</h4>
+              <ul>
+                <li><a href="index.html#manifesto">Our Promise</a></li>
+                <li><a href="index.html#manifesto">Zero Audio Retention</a></li>
+                <li><a href="index.html#manifesto">No Model Training</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h4 class="footer-col-head">Company</h4>
+              <ul>
+                <li><a href="https://www.trytaim.com/">About Kyrosphere</a></li>
+                <li><a href="https://www.trytaim.com/blog">Blogs</a></li>
+                <li><a href="mailto:hello@trytaim.com">Contact</a></li>
+                <li><a href="mcp.html">MCP Server</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <span
+              >&copy; 2026 Kyrosphere Inc. Handcrafted for human minds.</span
+            >
+            <div class="footer-bottom-links">
+              <a href="index.html#manifesto">Our Promise</a>
+              <a href="index.html#top">Terms</a>
+              <a href="mcp.html">MCP Server</a>
+              <a href="#top">Back to top &uarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Endpoint copy button
+      var copyBtn = document.getElementById("copyEndpointBtn");
+      var endpointUrl = document.getElementById("endpointUrl");
+      if (copyBtn && endpointUrl) {
+        copyBtn.addEventListener("click", function () {
+          navigator.clipboard
+            .writeText(endpointUrl.textContent.trim())
+            .then(function () {
+              copyBtn.classList.add("copied");
+              copyBtn.querySelector("span").textContent = "Copied!";
+              setTimeout(function () {
+                copyBtn.classList.remove("copied");
+                copyBtn.querySelector("span").textContent = "Copy Endpoint";
+              }, 2200);
+            });
+        });
+      }
+
+      // Code block copy buttons
+      document.querySelectorAll(".code-copy-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var code = btn.getAttribute("data-copy");
+          if (!code) return;
+          navigator.clipboard.writeText(code).then(function () {
+            var orig = btn.textContent;
+            btn.textContent = "Copied!";
+            setTimeout(function () {
+              btn.textContent = orig;
+            }, 2000);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
