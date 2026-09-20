@@ -144,16 +144,15 @@
 (function () {
   var stepBtns = document.querySelectorAll(".demo-steps-nav .step-btn");
   var panes = document.querySelectorAll(".demo-screen-pane");
-  var stepLabel = document.getElementById("demoStepLabel");
+  var stepCaption = document.getElementById("demoStepCaption");
   var taskItem = document.getElementById("demoTaskItem");
   if (!panes.length) return;
 
-  var stepScreens = ["thought1", "threads", "thoughtdetail", "schedule"];
+  var stepScreens = ["routing", "threads", "schedule"];
   var stepCaptions = {
-    thought1: "DEMO : Thought Screen (1) · Clean intent separation",
-    threads: "DEMO : Living Threads · Automatic routing without tags",
-    thoughtdetail: "DEMO : Thought Detail · Context and voice preserved",
-    schedule: "DEMO : Schedule Screen · Calendar holds & tasks ticked off",
+    routing: "AI Routing · Instant thought filing into living threads & tasks",
+    threads: "Living Threads · Collaborative marketing stream & intelligent copilot",
+    schedule: "Schedule Hub · Unified timeline, Google/Apple events & task checks",
   };
 
   var currentStepIdx = 0;
@@ -175,11 +174,14 @@
     });
 
     // Update descriptive caption
-    if (stepLabel && stepCaptions[screenName]) {
-      stepLabel.textContent = stepCaptions[screenName];
+    if (stepCaption && stepCaptions[screenName]) {
+      var captionText = stepCaption.querySelector("span:last-child");
+      if (captionText) {
+        captionText.textContent = stepCaptions[screenName];
+      }
     }
 
-    // Schedule task checkoff interaction
+    // Schedule task checkoff interaction for schedule screen
     if (taskTimeout) {
       clearTimeout(taskTimeout);
       taskTimeout = null;
@@ -190,7 +192,7 @@
         taskItem.classList.remove("checked");
         taskTimeout = setTimeout(function () {
           taskItem.classList.add("checked");
-        }, 850);
+        }, 900);
       } else {
         taskItem.classList.remove("checked");
       }
@@ -204,7 +206,7 @@
 
   function startLoop() {
     stopLoop();
-    loopTimer = setInterval(advanceStep, 3800);
+    loopTimer = setInterval(advanceStep, 4500);
   }
 
   function stopLoop() {
@@ -222,8 +224,8 @@
       currentStepIdx = stepScreens.indexOf(targetScreen);
       if (currentStepIdx === -1) currentStepIdx = index;
       setScreen(targetScreen);
-      // Resume loop after 7 seconds of user inactivity
-      setTimeout(startLoop, 7000);
+      // Resume loop after 8 seconds of user inactivity
+      setTimeout(startLoop, 8000);
     });
   });
 
@@ -243,27 +245,11 @@
 (function () {
   var section = document.querySelector(".personas-cards-section");
   var cards = section ? section.querySelectorAll(".persona-fade-card") : [];
+  var dots = section ? section.querySelectorAll(".persona-dot") : [];
   if (!section || !cards.length) return;
 
   var activeIndex = 0;
   var ticking = false;
-  var boundaryJumping = false;
-  var nextPage = null;
-
-  function jumpToPage(target, keepSnapDisabled) {
-    var root = document.documentElement;
-    var previousBehavior = root.style.scrollBehavior;
-    var previousSnap = root.style.scrollSnapType;
-    root.style.scrollBehavior = "auto";
-    root.style.scrollSnapType = "none";
-    document.scrollingElement.scrollTop = target;
-    if (!keepSnapDisabled) {
-      window.requestAnimationFrame(function () {
-        root.style.scrollBehavior = previousBehavior;
-        root.style.scrollSnapType = previousSnap;
-      });
-    }
-  }
 
   function setActive(index) {
     activeIndex = Math.max(0, Math.min(cards.length - 1, index));
@@ -272,39 +258,50 @@
       card.classList.toggle("active", isActive);
       card.setAttribute("aria-hidden", String(!isActive));
     });
+
+    dots.forEach(function (dot, i) {
+      dot.classList.toggle("active", i === activeIndex);
+    });
   }
 
   function updateFromScroll() {
+    var rect = section.getBoundingClientRect();
     var scrollableHeight = section.offsetHeight - window.innerHeight;
-    var distanceIntoSection = -section.getBoundingClientRect().top;
-    var progress =
-      scrollableHeight > 0
-        ? Math.max(0, Math.min(1, distanceIntoSection / scrollableHeight))
-        : 0;
-    var nextIndex =
-      progress === 0
-        ? 0
-        : progress >= 0.78
-          ? cards.length - 1
-          : Math.min(
-              cards.length - 2,
-              Math.ceil(progress * (cards.length - 1)),
-            );
+    if (scrollableHeight <= 0) {
+      setActive(0);
+      ticking = false;
+      return;
+    }
+
+    // Distance scrolled into the sticky persona section
+    var distanceIntoSection = -rect.top;
+    var progress = Math.max(0, Math.min(1, distanceIntoSection / scrollableHeight));
+
+    // Evenly divide scroll progress across all 6 cards so each card has ample scroll duration:
+    // Card 0 (Creatives): [0.00, 0.166)
+    // Card 1 (ADHD):      [0.166, 0.333)
+    // Card 2 (Students):  [0.333, 0.500)
+    // Card 3 (Founders):  [0.500, 0.666)
+    // Card 4 (Daily):     [0.666, 0.833)
+    // Card 5 (Friends):   [0.833, 1.000]
+    var nextIndex = Math.min(cards.length - 1, Math.floor(progress * cards.length));
     setActive(nextIndex);
 
-    var sectionEnd =
-      section.offsetTop + section.offsetHeight - window.innerHeight;
-    if (
-      nextIndex === cards.length - 1 &&
-      nextPage &&
-      window.scrollY >= sectionEnd - 2 &&
-      !boundaryJumping
-    ) {
-      boundaryJumping = true;
-      jumpToPage(nextPage.offsetTop);
-    }
     ticking = false;
   }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener("click", function () {
+      var targetIdx = parseInt(dot.getAttribute("data-target"), 10);
+      if (isNaN(targetIdx)) return;
+      var scrollableHeight = section.offsetHeight - window.innerHeight;
+      var targetScroll = section.offsetTop + (targetIdx / cards.length) * scrollableHeight + 10;
+      window.scrollTo({
+        top: targetScroll,
+        behavior: "smooth",
+      });
+    });
+  });
 
   window.addEventListener(
     "scroll",
@@ -316,47 +313,16 @@
     { passive: true },
   );
 
-  nextPage = section.nextElementSibling;
   window.addEventListener(
-    "wheel",
-    function (event) {
-      if (!nextPage || event.deltaY === 0) {
-        return;
-      }
-
-      var sectionStart = section.offsetTop;
-      var nextPageStart = nextPage.offsetTop;
-      var currentScroll = window.scrollY;
-      var sectionScrollDistance = section.offsetHeight - window.innerHeight;
-      var friendsRangeStart =
-        sectionStart + Math.max(0, sectionScrollDistance * 0.5);
-      var movingToNextPage =
-        event.deltaY > 0 &&
-        currentScroll >= friendsRangeStart &&
-        currentScroll < nextPageStart - 2;
-      var returningToFriends =
-        event.deltaY < 0 &&
-        currentScroll >= nextPageStart - 2 &&
-        currentScroll <= nextPageStart + 2;
-
-      if (!movingToNextPage && !returningToFriends) return;
-
-      event.preventDefault();
-      boundaryJumping = true;
-      if (movingToNextPage) {
-        document.documentElement.style.scrollSnapType = "y mandatory";
-      }
-      jumpToPage(
-        movingToNextPage
-          ? nextPageStart
-          : sectionStart + section.offsetHeight - window.innerHeight,
-        returningToFriends,
-      );
+    "resize",
+    function () {
+      updateFromScroll();
     },
-    { passive: false, capture: true },
+    { passive: true },
   );
 
   setActive(0);
+  updateFromScroll();
 })();
 
 /* ─── GSAP ANIMATIONS ─── */
