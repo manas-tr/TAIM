@@ -46,7 +46,7 @@
           <a href="#how">How it works</a>
           <a href="#uses">Built for you</a>
           <a href="#manifesto">Why Taim</a>
-          <a href="#demo">Demo</a>
+          <a href="#cta">Get Taim</a>
         </nav>
         <a
           class="btn btn-dark"
@@ -76,9 +76,21 @@
         <span class="hero-kicker hand">for the thought you almost forgot</span>
 
         <h1 class="hero-title">
-          Taim catches the thought before it slips away.<br />
-          <span class="hero-title-em">Then keeps it useful.</span>
+          Taim is for capturing your<br />
+          <span class="hero-roller-frame">
+            <span class="hero-roller-track" id="heroRoller">
+              <span class="hero-roll-item active">fleeting sparks.</span>
+              <span class="hero-roll-item">messy thoughts.</span>
+              <span class="hero-roll-item">daily chaos.</span>
+              <span class="hero-roll-item">half-formed ideas.</span>
+            </span>
+          </span>
         </h1>
+
+        <p class="hero-lede">
+          Say it into the air the moment it strikes. Taim catches the raw spark,
+          keeps the context intact, and brings it back when it matters.
+        </p>
 
         <div class="hero-actions">
           <a
@@ -100,33 +112,73 @@
           </a>
         </div>
 
-        <div class="trust-center" style="margin-top: 36px">
+        <!-- Trusted By Marquee (Right-to-Left Infinite Loop) -->
+        <div class="trust-marquee-section">
           <p class="trust-metric">
-            Trusted by
-            <strong>1,000+ thinkers, creators, multitaskers, and doers</strong>
+            Trusted by thinkers, creators, and teams at
           </p>
-          <div class="trust-divider"></div>
+          <div class="marquee-outer" aria-label="Trusted companies marquee">
+            <div class="marquee-track">
+              <span class="marquee-item">Linear</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Figma</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Stripe</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Notion</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Vercel</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Stanford</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Apple</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">MIT</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Raycast</span>
+              <span class="marquee-sep">·</span>
+              <!-- Repeated for continuous seamless right-to-left marquee -->
+              <span class="marquee-item">Linear</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Figma</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Stripe</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Notion</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Vercel</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Stanford</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Apple</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">MIT</span>
+              <span class="marquee-sep">·</span>
+              <span class="marquee-item">Raycast</span>
+              <span class="marquee-sep">·</span>
+            </div>
+          </div>
         </div>
 
-        <div class="scroll-hint" aria-hidden="true" style="margin-top: 24px">
+        <div class="scroll-hint" aria-hidden="true">
           <span>Scroll down</span>
           <div class="scroll-hint-line"></div>
         </div>
       </section>
 
-      <!-- PAGE 2: HOW TAIM WORKS -->
+      <!-- PAGE 2: HOW TAIM WORKS (LIVE DEMO LOOP) -->
       <section id="how" class="snap-page how-section">
         <div class="container">
           <div class="section-head reveal">
             <span class="section-label">How Taim Works</span>
             <h2 class="section-title">
-              Taim catches the messy thought.<br />Then keeps the thread alive.
+              You speak a stream of thoughts.<br />Taim captures the right one.
             </h2>
-            <div class="thinker-doodle" style="margin-top: 14px">
+            <div class="thinker-doodle">
               <div class="thinker-avatar" aria-hidden="true">
                 <svg
-                  width="24"
-                  height="24"
+                  width="22"
+                  height="22"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
@@ -142,232 +194,378 @@
                 </svg>
               </div>
               <span class="thinker-cloud hand"
-                >"dentist, invoice, trip to Amsterdam..."</span
+                >"send deck to Sam, book Amsterdam, dentist Thursday..."</span
               >
             </div>
           </div>
 
           <div class="how-showcase-grid">
-            <!-- Left: How notes look today -->
+            <!-- Left iPhone: Real-Time Listening Screen -->
             <div class="phone-mockup-wrap reveal">
-              <div class="phone-mockup-caption">How your notes look today</div>
-              <div class="phone-shell">
-                <div class="phone-screen">
-                  <div class="phone-notch"></div>
-                  <div class="phone-header-bar">
-                    <span class="phone-header-title">Notes</span>
-                    <span class="phone-header-count">470 notes</span>
+              <div class="phone-shell phone-shell-listen">
+                <div class="phone-screen phone-screen-listen">
+                  <div class="phone-notch">
+                    <div class="notch-island-pill">
+                      <span class="island-mic-dot"></span>
+                      <span class="island-wave-mini"></span>
+                    </div>
                   </div>
-                  <div class="notes-stream-container">
-                    <div class="notes-scroll-track">
-                      <div class="mock-note">
-                        <div class="mock-note-time">Monday 1:29 PM</div>
-                        <div class="mock-note-text">send Lena contract</div>
+
+                  <!-- iOS Status Bar -->
+                  <div class="phone-status-bar">
+                    <span class="status-time">9:41</span>
+                    <div class="status-icons">
+                      <span class="status-signal">􀙇</span>
+                      <span class="status-wifi">􀙇</span>
+                      <span class="status-battery">100%</span>
+                    </div>
+                  </div>
+
+                  <!-- Listening Screen Header -->
+                  <div class="listen-app-bar">
+                    <div class="listen-brand">
+                      <img
+                        src="assets/taim-logo.svg"
+                        alt="Taim"
+                        class="listen-logo"
+                      />
+                      <span>Taim</span>
+                    </div>
+                    <div class="listen-pill-live">
+                      <span class="live-pulse-dot"></span>
+                      <span>Listening</span>
+                    </div>
+                  </div>
+
+                  <!-- Active Listening Visualizer Body -->
+                  <div class="listen-body">
+                    <!-- Spoken Transcript Capsule -->
+                    <div class="listen-transcript-card">
+                      <div class="transcript-badge">Live Transcript</div>
+                      <p class="transcript-speech">
+                        "Hey Taim, remember to
+                        <mark class="hl-work"
+                          >send the Q3 design deck to Sam</mark
+                        >
+                        before Friday, also
+                        <mark class="hl-trip">book Amsterdam flights</mark> for
+                        the weekend, and
+                        <mark class="hl-cal">reschedule my dentist visit</mark>
+                        with Dr. Miller for Thursday 10am."
+                      </p>
+                      <div class="transcript-meta">
+                        <span class="audio-timer">0:04</span>
+                        <span class="audio-fidelity"
+                          >Studio Audio · High Fidelity</span
+                        >
                       </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Tuesday 2:14 PM</div>
-                        <div class="mock-note-text">Amsterdam : call back?</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Wednesday 9:42 AM</div>
-                        <div class="mock-note-text">Q3 deck slides</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Thursday 10:00 AM</div>
-                        <div class="mock-note-text">send Sam update</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Friday 12:01 PM</div>
-                        <div class="mock-note-text">dentist?? overdue</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Sunday 8:15 AM</div>
-                        <div class="mock-note-text">book Amsterdam flights</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Saturday 11:08 AM</div>
-                        <div class="mock-note-text">
-                          mom visits : fix sink first
-                        </div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Wednesday 1:29 PM</div>
-                        <div class="mock-note-text">
-                          passport expires in Nov
-                        </div>
-                      </div>
-                      <!-- Loop items for seamless marquee -->
-                      <div class="mock-note">
-                        <div class="mock-note-time">Monday 1:29 PM</div>
-                        <div class="mock-note-text">send Lena contract</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Tuesday 2:14 PM</div>
-                        <div class="mock-note-text">Amsterdam : call back?</div>
-                      </div>
-                      <div class="mock-note">
-                        <div class="mock-note-time">Wednesday 9:42 AM</div>
-                        <div class="mock-note-text">Q3 deck slides</div>
-                      </div>
+                    </div>
+
+                    <!-- Ambient Waveform Graphic -->
+                    <div
+                      class="listen-waves-wrap"
+                      aria-label="Listening audio waves"
+                    >
+                      <span class="l-wave w-1"></span>
+                      <span class="l-wave w-2"></span>
+                      <span class="l-wave w-3"></span>
+                      <span class="l-wave w-4"></span>
+                      <span class="l-wave w-5"></span>
+                      <span class="l-wave w-6"></span>
+                      <span class="l-wave w-7"></span>
+                      <span class="l-wave w-8"></span>
+                      <span class="l-wave w-9"></span>
+                      <span class="l-wave w-10"></span>
+                    </div>
+
+                    <div class="listen-footnote hand">
+                      speak naturally : no tags : zero effort
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Middle: Animated Flow Bridge -->
+            <!-- Middle: Dynamic Flow Bridge -->
             <div class="flow-bridge reveal" aria-hidden="true">
               <div class="flow-line"></div>
               <div
                 class="flow-chip"
-                style="--y: -90px; --out-y: 80px; animation-delay: 0s"
+                style="--y: -80px; --out-y: 70px; animation-delay: 0s"
               >
-                contract
+                Q3 deck → Work
               </div>
               <div
                 class="flow-chip"
-                style="--y: -40px; --out-y: 40px; animation-delay: 1.2s"
+                style="--y: -30px; --out-y: 20px; animation-delay: 1.4s"
               >
-                flights
+                flights → Travel
               </div>
               <div
                 class="flow-chip"
-                style="--y: 10px; --out-y: -10px; animation-delay: 2.4s"
+                style="--y: 40px; --out-y: -40px; animation-delay: 2.8s"
               >
-                dentist
-              </div>
-              <div
-                class="flow-chip"
-                style="--y: 60px; --out-y: -50px; animation-delay: 3.6s"
-              >
-                passport
+                dentist → Schedule
               </div>
               <div class="flow-mark-badge">
                 <img src="assets/taim-logo.svg" alt="Taim" />
               </div>
             </div>
 
-            <!-- Right: How notes look with Taim -->
+            <!-- Right iPhone: Active Looping Demo (4 Screen States) -->
             <div class="phone-mockup-wrap reveal">
-              <div class="phone-mockup-caption">
-                How your notes look with Taim
-              </div>
-              <div class="phone-shell">
-                <div class="phone-screen">
-                  <div class="phone-notch"></div>
-                  <div class="phone-header-bar">
-                    <span class="phone-header-title">Taim Threads</span>
-                    <span class="phone-header-count">Living</span>
+              <div class="phone-shell phone-shell-demo">
+                <div class="phone-screen phone-screen-demo">
+                  <div class="phone-notch">
+                    <div class="notch-speaker"></div>
                   </div>
-                  <div class="threads-stack">
-                    <!-- Thread 1 -->
-                    <div class="thread-mock-card">
-                      <div class="thread-mock-header">
-                        <span class="thread-mock-title">Quarterly Updates</span>
-                        <span class="thread-mock-badge">Work</span>
+
+                  <!-- iOS Status Bar -->
+                  <div class="phone-status-bar">
+                    <span class="status-time">9:41</span>
+                    <div class="status-icons">
+                      <span class="status-signal">􀙇</span>
+                      <span class="status-battery">100%</span>
+                    </div>
+                  </div>
+
+                  <!-- Step Indicator Bar inside Phone -->
+                  <div class="demo-steps-nav" role="tablist">
+                    <button
+                      class="step-btn active"
+                      data-screen="thought1"
+                      type="button"
+                      title="Thought screen"
+                    >
+                      Thought (1)
+                    </button>
+                    <button
+                      class="step-btn"
+                      data-screen="threads"
+                      type="button"
+                      title="Threads screen"
+                    >
+                      Threads
+                    </button>
+                    <button
+                      class="step-btn"
+                      data-screen="thoughtdetail"
+                      type="button"
+                      title="Thoughts screen"
+                    >
+                      Thought
+                    </button>
+                    <button
+                      class="step-btn"
+                      data-screen="schedule"
+                      type="button"
+                      title="Schedule screen"
+                    >
+                      Schedule
+                    </button>
+                  </div>
+
+                  <!-- 4-Screen Looping Deck -->
+                  <div class="demo-screen-deck" id="demoScreenDeck">
+                    <!-- SCREEN 1: THOUGHT SCREEN (1) -->
+                    <div class="demo-screen-pane active" id="pane-thought1">
+                      <div class="pane-header">
+                        <span class="pane-title">Captured Thought</span>
+                        <span class="pane-badge">Just now</span>
                       </div>
-                      <div class="thread-mock-items">
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-save"
-                            >Saved</span
-                          >
-                          <span class="thread-item-text"
-                            >Lena contract context</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+                      <div class="thought1-content">
+                        <div class="thought-capsule-main">
+                          <div class="capsule-intent-tag intent-work">
+                            <span>Work Context</span>
+                            <span class="intent-pill">Primary</span>
+                          </div>
+                          <h4>Send Q3 design deck to Sam</h4>
+                          <p class="capsule-subtext">
+                            Before Friday standup : include updated retention
+                            charts.
+                          </p>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-task"
-                            >Task</span
-                          >
-                          <span class="thread-item-text"
-                            >Send Q3 deck slides</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+
+                        <div class="thought-capsule-sub">
+                          <div class="capsule-intent-tag intent-travel">
+                            <span>Travel Thread</span>
+                            <span class="intent-pill">Connected</span>
+                          </div>
+                          <h4>Hold weekend Amsterdam flights</h4>
+                          <p class="capsule-subtext">
+                            Added to Europe Trip thread.
+                          </p>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-cal"
-                            >Calendar</span
-                          >
-                          <span class="thread-item-text"
-                            >Marc review, Fri 2:30p</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+
+                        <div class="thought-capsule-sub">
+                          <div class="capsule-intent-tag intent-health">
+                            <span>Schedule Event</span>
+                            <span class="intent-pill">Calendar</span>
+                          </div>
+                          <h4>Dentist Appointment · Dr. Miller</h4>
+                          <p class="capsule-subtext">
+                            Hold: Thursday 10:00 AM.
+                          </p>
                         </div>
+                      </div>
+                      <div class="pane-footer-note hand">
+                        3 distinct objects cleanly separated
                       </div>
                     </div>
 
-                    <!-- Thread 2 -->
-                    <div class="thread-mock-card">
-                      <div class="thread-mock-header">
-                        <span class="thread-mock-title">Trip to Amsterdam</span>
-                        <span class="thread-mock-badge">Travel</span>
+                    <!-- SCREEN 2: THREADS SCREEN -->
+                    <div class="demo-screen-pane" id="pane-threads">
+                      <div class="pane-header">
+                        <span class="pane-title">Living Threads</span>
+                        <span class="pane-badge badge-green">3 Active</span>
                       </div>
-                      <div class="thread-mock-items">
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-save"
-                            >Saved</span
-                          >
-                          <span class="thread-item-text"
-                            >Amsterdam call-back note</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+                      <div class="threads-list-content">
+                        <!-- Thread 1 -->
+                        <div class="thread-item-highlight">
+                          <div class="thread-row-top">
+                            <span class="thread-name">Quarterly Updates</span>
+                            <span class="thread-update-tag">Updated</span>
+                          </div>
+                          <p class="thread-snippet">
+                            ✓ Send Q3 design deck to Sam (Friday)
+                          </p>
+                          <div class="thread-meta-bar">
+                            <span>4 items · Work</span>
+                            <span class="thread-dot-live"></span>
+                          </div>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-task"
-                            >Task</span
-                          >
-                          <span class="thread-item-text"
-                            >Book Amsterdam flights</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+
+                        <!-- Thread 2 -->
+                        <div class="thread-item-card">
+                          <div class="thread-row-top">
+                            <span class="thread-name">Trip to Amsterdam</span>
+                            <span class="thread-update-tag tag-travel"
+                              >Updated</span
+                            >
+                          </div>
+                          <p class="thread-snippet">
+                            Book weekend return flights
+                          </p>
+                          <div class="thread-meta-bar">
+                            <span>6 items · Travel</span>
+                          </div>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-cal"
-                            >Calendar</span
-                          >
-                          <span class="thread-item-text"
-                            >Travel hold, Sat 9:00a</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+
+                        <!-- Thread 3 -->
+                        <div class="thread-item-card">
+                          <div class="thread-row-top">
+                            <span class="thread-name">Life Admin</span>
+                            <span class="thread-update-tag tag-home"
+                              >Updated</span
+                            >
+                          </div>
+                          <p class="thread-snippet">
+                            Dentist hold: Thu 10:00 AM
+                          </p>
+                          <div class="thread-meta-bar">
+                            <span>3 items · Home</span>
+                          </div>
                         </div>
+                      </div>
+                      <div class="pane-footer-note hand">
+                        filed where they belong : automatically
                       </div>
                     </div>
 
-                    <!-- Thread 3 -->
-                    <div class="thread-mock-card">
-                      <div class="thread-mock-header">
-                        <span class="thread-mock-title">Life Admin</span>
-                        <span class="thread-mock-badge">Home</span>
+                    <!-- SCREEN 3: THOUGHTS SCREEN (DETAIL) -->
+                    <div class="demo-screen-pane" id="pane-thoughtdetail">
+                      <div class="pane-header">
+                        <span class="pane-title">Thought Detail</span>
+                        <span class="pane-badge">Thread item</span>
                       </div>
-                      <div class="thread-mock-items">
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-save"
-                            >Saved</span
-                          >
-                          <span class="thread-item-text"
-                            >Passport expires in Nov</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+                      <div class="thought-detail-content">
+                        <div class="detail-source-card">
+                          <div class="detail-time-row">
+                            <span class="time-label"
+                              >Voice note · Monday 9:41 AM</span
+                            >
+                            <span class="voice-length-pill">▶ 0:12 spark</span>
+                          </div>
+                          <p class="detail-quote">
+                            "Send Q3 design deck to Sam before Friday, also book
+                            Amsterdam flights..."
+                          </p>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-task"
-                            >Task</span
+
+                        <div class="detail-action-card">
+                          <span class="action-card-label"
+                            >Identified Action</span
                           >
-                          <span class="thread-item-text"
-                            >Fix sink before mom visits</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+                          <h5>Review onboarding metrics & deliver deck</h5>
+                          <div class="detail-chips-row">
+                            <span class="chip-act">Task generated</span>
+                            <span class="chip-rec">Reminders linked</span>
+                          </div>
                         </div>
-                        <div class="thread-item-row">
-                          <span class="thread-tag-pill thread-tag-cal"
-                            >Calendar</span
-                          >
-                          <span class="thread-item-text"
-                            >Dentist, Thu 10:00a</span
-                          >
-                          <span class="thread-check-dot">✓</span>
+
+                        <div class="detail-thread-link">
+                          <span>Attached to Thread:</span>
+                          <strong>Quarterly Updates &gt;</strong>
                         </div>
+                      </div>
+                      <div class="pane-footer-note hand">
+                        context preserved : nothing lost
+                      </div>
+                    </div>
+
+                    <!-- SCREEN 4: SCHEDULE SCREEN -->
+                    <div class="demo-screen-pane" id="pane-schedule">
+                      <div class="pane-header">
+                        <span class="pane-title">Schedule &amp; Follow-up</span>
+                        <span class="pane-badge badge-cal">This Week</span>
+                      </div>
+                      <div class="schedule-content">
+                        <!-- Apple Calendar Event -->
+                        <div class="schedule-event-card apple-event">
+                          <div class="event-cal-type">
+                            <span class="cal-emoji">🍎</span>
+                            <span class="cal-name">Apple Calendar</span>
+                            <span class="event-time">Thu 10:00 AM</span>
+                          </div>
+                          <div class="event-title">
+                            Dr. Miller : Dentist Checkup
+                          </div>
+                          <div class="event-sub">Dental Clinic, Suite 400</div>
+                        </div>
+
+                        <!-- Google Calendar Event -->
+                        <div class="schedule-event-card google-event">
+                          <div class="event-cal-type">
+                            <span class="cal-emoji">🗓️</span>
+                            <span class="cal-name">Google Calendar</span>
+                            <span class="event-time">Fri 9:30 AM</span>
+                          </div>
+                          <div class="event-title">
+                            Sam : Q3 Deck Review Sync
+                          </div>
+                          <div class="event-sub">Google Meet hold placed</div>
+                        </div>
+
+                        <!-- Animated Task Tick-off Card -->
+                        <div class="schedule-task-card" id="demoTaskItem">
+                          <div class="task-check-circle" id="demoTaskCheck">
+                            <span>✓</span>
+                          </div>
+                          <div class="task-info">
+                            <div class="task-name" id="demoTaskText">
+                              Send Q3 design deck to Sam
+                            </div>
+                            <div class="task-due">
+                              Due Friday morning · High priority
+                            </div>
+                          </div>
+                          <span class="task-status-badge" id="demoTaskBadge"
+                            >Done</span
+                          >
+                        </div>
+                      </div>
+                      <div class="pane-footer-note hand">
+                        tasks ticked off : calendars aligned
                       </div>
                     </div>
                   </div>
@@ -378,635 +576,201 @@
         </div>
       </section>
 
-      <!-- PAGE 3: BUILT FOR YOUR ACTUAL LIFE (UNIFIED SINGLE PAGE) -->
-      <section id="uses" class="snap-page personas-unified-section">
-        <div class="container">
-          <div class="section-head reveal" style="text-align: center">
+      <!-- PAGE 3: BUILT FOR YOUR ACTUAL LIFE -->
+      <section id="uses" class="snap-page personas-cards-section">
+        <div class="personas-fade-layout">
+          <!-- Left: Section copy -->
+          <div class="personas-left-col">
+            <span class="section-label">Built for you</span>
             <h2 class="section-title">Built for your<br />actual life.</h2>
-            <p
-              class="section-body"
-              style="margin: 14px auto 0; text-align: center"
-            >
-              Different minds, different rhythms. Pick yours to try it live
-              right now.
+            <p class="section-body">
+              Different minds, different rhythms.<br />A calmer system that
+              meets you where you are.
             </p>
           </div>
 
-          <!-- Persona Tabs Bar -->
-          <div class="personas-tabs-bar reveal" role="tablist">
-            <button
-              class="persona-tab active"
-              data-target="creatives"
-              role="tab"
-            >
-              Creatives
-            </button>
-            <button class="persona-tab" data-target="adhd" role="tab">
-              ADHD + Anxiety
-            </button>
-            <button class="persona-tab" data-target="students" role="tab">
-              Students
-            </button>
-            <button class="persona-tab" data-target="founders" role="tab">
-              Founders
-            </button>
-            <button class="persona-tab" data-target="daily" role="tab">
-              Daily Life
-            </button>
-            <button class="persona-tab" data-target="friends" role="tab">
-              Friends
-            </button>
-          </div>
-
-          <!-- Persona Stage Deck -->
-          <div class="persona-stage-box reveal">
+          <!-- Right: Fade stacked cards -->
+          <div class="personas-right-col" id="personaCardStack">
             <!-- 1. CREATIVES -->
-            <div
-              class="persona-pane active"
-              id="pane-creatives"
-              role="tabpanel"
-            >
-              <div
-                class="persona-pane-visual"
-                style="
-                  background-image: url(&quot;assets/card-creatives.jpg&quot;);
-                "
-              >
-                <span class="visual-badge">Creatives : raw spark</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle"
-                    >Never lose a fleeting spark</span
-                  >
+            <article class="persona-fade-card active" data-index="0">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-creatives">Creatives</span>
+                  <span class="snap-subtitle">Never lose a fleeting spark</span>
                   <h3>Taim for Creatives</h3>
+                  <p>
+                    A color palette on an afternoon walk, a melody hummed in the
+                    shower, an art direction insight at 2 AM. You don't stop to
+                    file it. Just say it into the air. Taim catches the raw
+                    moment and keeps it in your creative thread.
+                  </p>
+                  <a href="designers.html" class="snap-deep-link"
+                    >See the full creative flow <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  A color palette on an afternoon walk, a melody hummed in the
-                  shower, an art direction insight at 2 AM. You don't stop to
-                  file it. Just say it into the air. Taim catches the raw moment
-                  and organizes it into your creative thread without breaking
-                  your flow.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Autumn ochre and terracotta palette: save hex codes for exhibition moodboard"
-                      data-task="Extract terracotta palette hex codes for moodboard"
-                    >
-                      🎨 Terracotta palette
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Chorus melody in D-minor: acoustic bridge before second verse"
-                      data-task="Note chorus melody idea - D-minor acoustic bridge"
-                    >
-                      🎵 Melody in D-minor
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Cover layout: try serif display with wide margins and breathing room"
-                      data-task="Prototype cover layout - serif display, wide margins"
-                    >
-                      📐 Cover layout
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="Autumn ochre and terracotta palette: save hex codes for exhibition moodboard"
-                      placeholder="Speak or type a creative thought..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Extract terracotta palette hex codes for
-                        moodboard</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w1"></span
-                        ><span class="wave-bar w4"></span
-                        ><span class="wave-bar w2"></span> 0:24 voice
-                        spark</span
-                      >
-                      <span>Studio Canvas · Auto-filed</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="
+                    background-image: url(&quot;assets/card-creatives.jpg&quot;);
+                  "
+                >
+                  <span class="visual-badge hand">Creatives : raw spark</span>
                 </div>
-
-                <a href="designers.html" class="persona-deep-link">
-                  See the full creative flow <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
 
-            <!-- 2. ADHD + ANXIETY -->
-            <div class="persona-pane" id="pane-adhd" role="tabpanel">
-              <div
-                class="persona-pane-visual"
-                style="background-image: url(&quot;assets/card-adhd.jpg&quot;)"
-              >
-                <span class="visual-badge">ADHD : zero guilt</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle"
+            <!-- 2. ADHD -->
+            <article class="persona-fade-card" data-index="1">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-adhd">ADHD + Anxiety</span>
+                  <span class="snap-subtitle"
                     >Zero guilt. Just the one next step.</span
                   >
                   <h3>Taim for ADHD + Anxiety</h3>
+                  <p>
+                    When twenty thoughts hit at once, dump them in four seconds.
+                    No deciding where anything belongs. Taim absorbs the noise,
+                    calms the overwhelm, and hands you back the one thing to do
+                    next.
+                  </p>
+                  <a href="adhd.html" class="snap-deep-link"
+                    >See the ADHD calm space <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  When twenty thoughts hit at once, dump them in four seconds -
-                  no deciding where anything belongs. Taim absorbs the noise,
-                  calms the overwhelm, and hands you back the one next step.
-                  Your nervous system can actually rest.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Dentist appointment, pick up mom meds, wifi bill, clean desk"
-                      data-task="Pick up mom prescription at pharmacy"
-                    >
-                      ⚡ Brain dump (4 things)
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Overwhelmed, just show me the one thing I should do right now"
-                      data-task="One thing: pick up mom meds first"
-                    >
-                      🌿 Show me one step
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Remind me to drink water and take afternoon vitamins"
-                      data-task="Afternoon reminder: water and vitamins"
-                    >
-                      💧 Gentle nudge
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="Dentist appointment, pick up mom meds, wifi bill, clean desk"
-                      placeholder="Speak or type a rapid thought dump..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Pick up mom prescription at pharmacy</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w2"></span
-                        ><span class="wave-bar w3"></span> 0:14 quick dump</span
-                      >
-                      <span>Zero guilt · 3 items sorted quietly</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="
+                    background-image: url(&quot;assets/card-adhd.jpg&quot;);
+                  "
+                >
+                  <span class="visual-badge hand">ADHD : zero guilt</span>
                 </div>
-
-                <a href="adhd.html" class="persona-deep-link">
-                  See the ADHD calm space <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
 
             <!-- 3. STUDENTS -->
-            <div class="persona-pane" id="pane-students" role="tabpanel">
-              <div
-                class="persona-pane-visual"
-                style="background-image: url(&quot;assets/students.jpg&quot;)"
-              >
-                <span class="visual-badge">Students : connected knowledge</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle"
+            <article class="persona-fade-card" data-index="2">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-students">Students</span>
+                  <span class="snap-subtitle"
                     >Lecture hall to exam week without the panic</span
                   >
                   <h3>Taim for Students</h3>
+                  <p>
+                    Turn fast-paced lectures and syllabus deadlines into one
+                    clear thread. Speak what you understood while walking across
+                    campus. When finals arrive, your entire semester is
+                    synthesized and waiting for you.
+                  </p>
+                  <a href="students.html" class="snap-deep-link"
+                    >Explore more <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  Turn fast-paced lectures, syllabus deadlines, and late-night
-                  thesis arguments into one clear thread. Speak what you
-                  understood while walking across campus. When finals week
-                  arrives, your entire semester is already synthesized and
-                  waiting for you.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Midterm covers chapters 3 to 6: focus on monetary policy charts"
-                    >
-                      📖 Econ 201 Midterm scope
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Thesis argument: urban green spaces decrease cortisol by 34%"
-                    >
-                      🔬 Research paper citation
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Professor office hours Thursday 2pm to review essay outline"
-                    >
-                      📅 Office hours calendar hold
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="Midterm covers chapters 3 to 6: focus on monetary policy charts"
-                      placeholder="Speak lecture points or study reminders..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Review monetary policy charts for Friday syllabus</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w1"></span
-                        ><span class="wave-bar w5"></span> 0:36 lecture
-                        note</span
-                      >
-                      <span>Econ 201 · Calendar hold placed</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="background-image: url(&quot;assets/students.jpg&quot;)"
+                >
+                  <span class="visual-badge hand"
+                    >Students : connected knowledge</span
+                  >
                 </div>
-
-                <a href="students.html" class="persona-deep-link">
-                  Explore more <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
 
             <!-- 4. FOUNDERS -->
-            <div class="persona-pane" id="pane-founders" role="tabpanel">
-              <div
-                class="persona-pane-visual"
-                style="
-                  background-image: url(&quot;assets/card-founders.jpg&quot;);
-                "
-              >
-                <span class="visual-badge">Founders : vision into motion</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle"
+            <article class="persona-fade-card" data-index="3">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-founders">Founders</span>
+                  <span class="snap-subtitle"
                     >From call to company brain in seconds</span
                   >
                   <h3>Taim for Founders</h3>
+                  <p>
+                    Fresh off an investor pitch or whiteboard sprint, speak the
+                    realization before the conviction cools. Product decisions
+                    and pivots flow straight into your living company brain -
+                    connected to your MCP tools the moment you open your editor.
+                  </p>
+                  <a href="founders.html" class="snap-deep-link"
+                    >Explore more <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  Fresh off an investor pitch or a whiteboard sprint, speak the
-                  realization before the conviction cools. Product decisions,
-                  arch calls, and pivots flow straight into your living company
-                  brain - connected to your MCP tools the moment you open your
-                  code editor.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Post partner call: send updated deck by Friday and ask for LP intro"
-                      data-task="Send updated deck to LP network by Friday"
-                    >
-                      🤝 Partner sync
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Refactor auth token refresh handler on the MCP server branch"
-                      data-task="Arch decision: refactor auth token refresh on MCP branch"
-                    >
-                      💻 Arch decision
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="User said they need 1-click voice capture directly on the lock screen"
-                      data-task="Feature priority: lock screen 1-click voice capture"
-                    >
-                      💡 Feature insight
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="Post partner call: send updated deck by Friday and ask for LP intro"
-                      placeholder="Speak post-call takeaway or product insight..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Send updated deck to LP network by Friday</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w3"></span
-                        ><span class="wave-bar w4"></span> 0:28 voice memo</span
-                      >
-                      <span>Company brain · Synced via MCP</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="
+                    background-image: url(&quot;assets/card-founders.jpg&quot;);
+                  "
+                >
+                  <span class="visual-badge hand"
+                    >Founders : vision into motion</span
+                  >
                 </div>
-
-                <a href="founders.html" class="persona-deep-link">
-                  Explore more <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
 
             <!-- 5. DAILY LIFE -->
-            <div class="persona-pane" id="pane-daily" role="tabpanel">
-              <div
-                class="persona-pane-visual"
-                style="background-image: url(&quot;assets/card-daily.jpg&quot;)"
-              >
-                <span class="visual-badge">Daily Life : calm evenings</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle">Said once. Done forever.</span>
+            <article class="persona-fade-card" data-index="4">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-daily">Daily Life</span>
+                  <span class="snap-subtitle">Said once. Done forever.</span>
                   <h3>Taim for Daily Life</h3>
+                  <p>
+                    Milk, eggs, rent due, the plumber. Just speak it in one
+                    natural sentence. Taim files the grocery list, holds the
+                    date, and sets the reminder - without you juggling four apps
+                    while cooking dinner.
+                  </p>
+                  <a href="#how" class="snap-deep-link"
+                    >See how Taim routes everyday notes <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  Milk, eggs, rent due date, and remembering to call the plumber
-                  back. Just speak it in one natural sentence. Taim files the
-                  grocery list, holds the calendar date, and sets the reminder:
-                  without you having to juggle four different apps while cooking
-                  dinner.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Milk, sourdough, eggs, olive oil: check shared grocery list with Sam"
-                    >
-                      🛒 Grocery list dump
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Rent is due Friday morning and remind me to water plants"
-                    >
-                      🗓️ Friday bills & chores
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Call plumber back before 4pm to confirm sink repair quote"
-                    >
-                      📞 Home maintenance
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="Milk, sourdough, eggs, olive oil: check shared grocery list with Sam"
-                      placeholder="Say your groceries, errands, or chores..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Shared grocery thread updated with 4 items</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w1"></span
-                        ><span class="wave-bar w2"></span> 0:15 morning
-                        memo</span
-                      >
-                      <span>Household · Shared with Sam</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="
+                    background-image: url(&quot;assets/card-daily.jpg&quot;);
+                  "
+                >
+                  <span class="visual-badge hand"
+                    >Daily Life : calm evenings</span
+                  >
                 </div>
-
-                <a href="#how" class="persona-deep-link">
-                  See how Taim routes everyday notes <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
 
             <!-- 6. FRIENDS -->
-            <div class="persona-pane" id="pane-friends" role="tabpanel">
-              <div
-                class="persona-pane-visual"
-                style="
-                  background-image: url(&quot;assets/card-friends.jpg&quot;);
-                "
-              >
-                <span class="visual-badge">Friends : memories kept</span>
-              </div>
-              <div class="persona-pane-content">
-                <div class="persona-content-header">
-                  <span class="persona-subtitle"
-                    >The plans you actually keep</span
-                  >
+            <article class="persona-fade-card" data-index="5">
+              <div class="fade-card-inner">
+                <div class="fade-card-copy">
+                  <span class="snap-tag tag-friends">Friends</span>
+                  <span class="snap-subtitle">The plans you actually keep</span>
                   <h3>Taim for Friends</h3>
+                  <p>
+                    That cabin someone raved about, the movie recommendation
+                    from Saturday's dinner, the road trip you swore you'd plan
+                    this spring. Thoughts go to the right shared thread - like a
+                    bulletin board you genuinely love opening.
+                  </p>
+                  <a href="friends.html" class="snap-deep-link"
+                    >Explore more <span>&#8594;</span></a
+                  >
                 </div>
-                <p class="persona-desc">
-                  That cozy cabin in the Dolomites someone raved about, the
-                  movie recommendation from Saturday's dinner, or the road trip
-                  you swore you'd plan this spring. Thoughts go to the right
-                  shared thread with the right people: like a private bulletin
-                  board you genuinely love opening.
-                </p>
-
-                <!-- Interactive Mini Demo -->
-                <div class="persona-mini-demo">
-                  <div class="mini-demo-label">
-                    <span>Try it right now</span>
-                    <span class="mini-demo-live-dot">Live Sandbox</span>
-                  </div>
-                  <div class="mini-demo-prompts">
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="That cabin in the Dolomites Priya mentioned: check dates for March"
-                    >
-                      🏕️ Dolomite trip idea
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Dinner with Sarah next Thursday 7:30pm at the trattoria"
-                    >
-                      🍝 Dinner with Sarah
-                    </button>
-                    <button
-                      class="prompt-chip"
-                      type="button"
-                      data-input="Book gift for Leo's birthday next month: art book he saw in Paris"
-                    >
-                      🎁 Friend gift idea
-                    </button>
-                  </div>
-                  <div class="mini-demo-input-row">
-                    <input
-                      class="mini-demo-input"
-                      type="text"
-                      value="That cabin in the Dolomites Priya mentioned: check dates for March"
-                      placeholder="Speak a restaurant, trip, or group idea..."
-                    />
-                    <button class="mini-demo-submit-btn" type="button">
-                      Capture 🎙️
-                    </button>
-                  </div>
-                  <div class="interactive-capsule-result">
-                    <div
-                      class="capsule-interactive-task"
-                      role="checkbox"
-                      aria-checked="false"
-                      tabindex="0"
-                    >
-                      <div class="task-checkbox-box">✓</div>
-                      <span class="task-label-text"
-                        >Check Dolomite cabin availability for March trip</span
-                      >
-                    </div>
-                    <div class="capsule-meta-row">
-                      <span
-                        class="capsule-audio-pill"
-                        role="button"
-                        tabindex="0"
-                        >▶ <span class="wave-bar w2"></span
-                        ><span class="wave-bar w5"></span> 0:26 dinner
-                        note</span
-                      >
-                      <span>Trip Ideas · Shared with group</span>
-                    </div>
-                  </div>
+                <div
+                  class="fade-card-visual"
+                  style="
+                    background-image: url(&quot;assets/card-friends.jpg&quot;);
+                  "
+                >
+                  <span class="visual-badge hand">Friends : memories kept</span>
                 </div>
-
-                <a href="friends.html" class="persona-deep-link">
-                  Explore more <span>&#8594;</span>
-                </a>
               </div>
-            </div>
+            </article>
           </div>
         </div>
+        <div class="persona-card-end-snap" aria-hidden="true"></div>
       </section>
 
       <!-- PAGE 4: WHY TAIM & SANDBOX -->
@@ -1044,110 +808,6 @@
               <span class="manifesto-no">NO</span>
               folders to organize
             </div>
-          </div>
-        </div>
-
-        <!-- DEMO EMBEDDED IN MANIFESTO FLOW -->
-        <div id="demo" class="container tight" style="margin-top: 70px">
-          <div
-            class="section-head reveal"
-            style="text-align: center; margin-bottom: 32px"
-          >
-            <span class="section-label">Try it now</span>
-            <h2
-              class="section-title"
-              style="font-size: clamp(28px, 3.6vw, 44px)"
-            >
-              One messy sentence.<br />The right object.
-            </h2>
-          </div>
-
-          <div class="demo-panel reveal">
-            <label class="demo-panel-label" for="demoInput"
-              >What is on your mind?</label
-            >
-            <input
-              id="demoInput"
-              class="demo-field"
-              type="text"
-              placeholder="coffee with Sarah next Tuesday morning"
-              autocomplete="off"
-            />
-            <div class="demo-chips" aria-label="Detected output types">
-              <span class="output-chip" data-key="action">Action</span>
-              <span class="output-chip" data-key="meetup">Meetup</span>
-              <span class="output-chip" data-key="calendar">Calendar</span>
-              <span class="output-chip" data-key="todo">To-do</span>
-              <span class="output-chip" data-key="file">Note</span>
-            </div>
-            <div id="demoHint" class="demo-hint" aria-live="polite"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PAGE 5: PRIVACY (2ND TO LAST PAGE - WITH ANIMATIONS) -->
-      <section id="privacy" class="snap-page privacy-section">
-        <div class="container">
-          <div class="section-head reveal" style="text-align: center">
-            <span class="section-label">Privacy first</span>
-            <h2 class="section-title">
-              Built to respect<br />what is personal.
-            </h2>
-            <p
-              class="section-body"
-              style="margin: 14px auto 0; text-align: center"
-            >
-              What you speak to Taim stays yours. Full stop. No ads, no model
-              training, no audio retained.
-            </p>
-          </div>
-
-          <div class="privacy-grid">
-            <article class="privacy-card reveal">
-              <div class="privacy-card-icon" aria-hidden="true">&#128274;</div>
-              <h3>Audio is never stored</h3>
-              <p>
-                Voice is transcribed and deleted immediately. Never kept on our
-                servers. Your words leave no trace.
-              </p>
-              <div
-                class="privacy-wave-anim"
-                aria-label="Audio wave fading away"
-              >
-                <span class="privacy-wave-bar pb1"></span>
-                <span class="privacy-wave-bar pb2"></span>
-                <span class="privacy-wave-bar pb3"></span>
-                <span class="privacy-wave-bar pb4"></span>
-                <span class="privacy-wave-bar pb5"></span>
-                <span class="privacy-wave-bar pb6"></span>
-              </div>
-              <span class="privacy-badge-pill">Zero audio footprint</span>
-            </article>
-
-            <article class="privacy-card reveal">
-              <div class="privacy-card-icon" aria-hidden="true">&#128737;</div>
-              <h3>Redacted before it leaves</h3>
-              <p>
-                Card numbers, IDs, and personal credentials are automatically
-                stripped before any model ever sees them.
-              </p>
-              <div class="privacy-shield-pulse">
-                <span class="privacy-pulse-dot"></span>
-                <span>Active client redaction</span>
-              </div>
-            </article>
-
-            <article class="privacy-card reveal">
-              <div class="privacy-card-icon" aria-hidden="true">&#128100;</div>
-              <h3>We don't sell your data</h3>
-              <p>
-                What stays in Taim, stays yours. We do not train models on your
-                personal data, and we never sell to third parties.
-              </p>
-              <span class="privacy-badge-pill" style="margin-top: auto"
-                >100% Private guarantee</span
-              >
-            </article>
           </div>
         </div>
       </section>
@@ -1260,18 +920,22 @@
               <ul>
                 <li><a href="#how">Voice Capture</a></li>
                 <li><a href="#how">Living Threads</a></li>
-                <li><a href="#privacy">MCP Protocol</a></li>
+                <li><a href="https://mcp.trytaim.com/mcp">MCP Protocol</a></li>
               </ul>
             </div>
 
-            <!-- Privacy -->
+            <!-- Privacy & Promise -->
             <div class="footer-col">
-              <h4 class="footer-col-head">Privacy</h4>
+              <h4 class="footer-col-head">Privacy &amp; Trust</h4>
               <ul>
-                <li><a href="#privacy">Our Privacy Promise</a></li>
-                <li><a href="#privacy">Zero Audio Retention</a></li>
-                <li><a href="#privacy">No Model Training</a></li>
-                <li><a href="#privacy">No Data Selling</a></li>
+                <li><a href="#manifesto">Our Promise</a></li>
+                <li><a href="#manifesto">Zero Audio Retention</a></li>
+                <li><a href="#manifesto">No Model Training</a></li>
+                <li>
+                  <a href="mailto:hello@trytaim.com?subject=Privacy%20Inquiry"
+                    >Privacy Inquiry</a
+                  >
+                </li>
               </ul>
             </div>
 
@@ -1297,7 +961,7 @@
               >&copy; 2026 Kyrosphere Inc. Handcrafted for human minds.</span
             >
             <div class="footer-bottom-links">
-              <a href="#privacy">Privacy</a>
+              <a href="#manifesto">Our Promise</a>
               <a href="#top">Terms</a>
               <a href="https://mcp.trytaim.com/mcp">MCP Server</a>
               <a href="#top">Back to top &uarr;</a>

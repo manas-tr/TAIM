@@ -86,7 +86,7 @@
     { threshold: 0.08, rootMargin: "0px 0px -50px 0px" },
   );
 
-  els.forEach(function (el, i) {
+  els.forEach(function (el) {
     /* Stagger siblings that are direct children of the same parent */
     var siblings = el.parentElement
       ? el.parentElement.querySelectorAll(".reveal")
@@ -97,258 +97,266 @@
   });
 })();
 
-/* ─── DEMO CLASSIFIER ─── */
+/* ─── HERO ROLLING WORDS LOOP ─── */
 (function () {
-  var CALENDAR_TIME = /\b\d{1,2}(:\d{2})?\s?(am|pm)\b/i;
-  var CALENDAR_WORDS = [
-    "today",
-    "tomorrow",
-    "tonight",
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-    "next week",
-    "next month",
-    "weekend",
-    "morning",
-    "afternoon",
-    "evening",
-    "date",
-    "deadline",
-  ];
-  var MEETUP_WORDS = [
-    "coffee",
-    "lunch",
-    "dinner",
-    "meet",
-    "meeting",
-    "catch up",
-    "drinks",
-    "hang out",
-    "call with",
-    "grab a",
-    "mom",
-    "friend",
-    "client",
-    "sarah",
-    "james",
-    "jake",
-    "amir",
-    "priya",
-  ];
-  var ACTION_WORDS = [
-    "call",
-    "email",
-    "send",
-    "book",
-    "pay",
-    "submit",
-    "reply",
-    "renew",
-    "cancel",
-    "confirm",
-    "sign",
-    "schedule",
-    "follow up",
-    "draft",
-  ];
-  var TODO_WORDS = [
-    "buy",
-    "pick up",
-    "grab",
-    "get",
-    "order",
-    "drop off",
-    "return",
-    "fix",
-    "clean",
-    "wash",
-    "research",
-    "check",
-  ];
-  var FILE_WORDS = [
-    "idea",
-    "note",
-    "notes",
-    "thought",
-    "thoughts",
-    "brainstorm",
-    "remember",
-    "project",
-    "write",
-    "plan",
-  ];
+  var track =
+    document.getElementById("heroRoller") ||
+    document.getElementById("heroRollerTrack");
+  if (!track) return;
+  var items = track.querySelectorAll(".hero-roll-item");
+  if (!items.length) return;
 
-  function containsAny(text, words) {
-    for (var i = 0; i < words.length; i++) {
-      var pattern = new RegExp(
-        "\\b" + words[i].replace(/\s+/g, "\\s+") + "\\b",
-        "i",
-      );
-      if (pattern.test(text)) return true;
-    }
-    return false;
-  }
+  var currentIndex = 0;
+  var count = items.length;
 
-  function classify(text) {
-    var active = [];
-    if (CALENDAR_TIME.test(text) || containsAny(text, CALENDAR_WORDS))
-      active.push("calendar");
-    if (containsAny(text, MEETUP_WORDS)) active.push("meetup");
-    if (containsAny(text, ACTION_WORDS)) active.push("action");
-    if (containsAny(text, TODO_WORDS)) active.push("todo");
-    if (containsAny(text, FILE_WORDS)) active.push("file");
-    if (!active.length) active.push("file");
-    return active;
-  }
-
-  function describe(active) {
-    var has = function (key) {
-      return active.indexOf(key) !== -1;
-    };
-    if (has("calendar") && has("meetup") && has("action"))
-      return "Taim keeps the person, timing, and follow-up together - not split across three apps.";
-    if (has("calendar") && has("meetup"))
-      return "Taim creates a calendar hold and keeps the relationship context in the same thread.";
-    if (has("action"))
-      return "Taim turns this into something it can follow up on, not just another line in a note.";
-    if (has("todo"))
-      return "Taim makes the task plain and easy to complete. No folder required.";
-    if (has("calendar"))
-      return "Taim places the timing where it belongs, then keeps the context attached.";
-    return "Taim saves this as a thread so it is searchable and actionable when it matters again.";
-  }
-
-  var input = document.getElementById("demoInput");
-  var chips = document.querySelectorAll(".output-chip");
-  var hint = document.getElementById("demoHint");
-
-  if (!input || !chips.length || !hint) return;
-
-  function render(value) {
-    var text = value.trim();
-    var active = text ? classify(text) : [];
-    chips.forEach(function (chip) {
-      chip.classList.toggle(
-        "active",
-        active.indexOf(chip.getAttribute("data-key")) !== -1,
-      );
+  function updateRoller(index) {
+    items.forEach(function (item, i) {
+      if (i === index) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
     });
-    hint.textContent = text ? describe(active) : "";
+    var itemHeight =
+      items[0].offsetHeight || items[0].getBoundingClientRect().height;
+    if (itemHeight > 0) {
+      track.style.transform = "translateY(-" + index * itemHeight + "px)";
+    } else {
+      track.style.transform = "translateY(-" + index * 1.25 + "em)";
+    }
   }
 
-  input.addEventListener("input", function () {
-    render(input.value);
-  });
-  input.value = "coffee with Sarah next Tuesday morning";
-  render(input.value);
+  window.addEventListener(
+    "resize",
+    function () {
+      updateRoller(currentIndex);
+    },
+    { passive: true },
+  );
+
+  setInterval(function () {
+    currentIndex = (currentIndex + 1) % count;
+    updateRoller(currentIndex);
+  }, 2600);
 })();
 
-/* ─── PERSONA TAB SWITCHER & INTERACTIVE MINI DEMO ─── */
+/* ─── 2-IPHONE INTERACTIVE & LOOPING DEMO ─── */
 (function () {
-  var tabs = document.querySelectorAll(".persona-tab");
-  var panes = document.querySelectorAll(".persona-pane");
-  if (!tabs.length || !panes.length) return;
+  var stepBtns = document.querySelectorAll(".demo-steps-nav .step-btn");
+  var panes = document.querySelectorAll(".demo-screen-pane");
+  var stepLabel = document.getElementById("demoStepLabel");
+  var taskItem = document.getElementById("demoTaskItem");
+  if (!panes.length) return;
 
-  tabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-      var targetId = tab.getAttribute("data-target");
-      tabs.forEach(function (t) {
-        t.classList.remove("active");
-      });
-      tab.classList.add("active");
+  var stepScreens = ["thought1", "threads", "thoughtdetail", "schedule"];
+  var stepCaptions = {
+    thought1: "DEMO : Thought Screen (1) · Clean intent separation",
+    threads: "DEMO : Living Threads · Automatic routing without tags",
+    thoughtdetail: "DEMO : Thought Detail · Context and voice preserved",
+    schedule: "DEMO : Schedule Screen · Calendar holds & tasks ticked off",
+  };
 
-      panes.forEach(function (pane) {
-        if (pane.id === "pane-" + targetId) {
-          pane.classList.add("active");
-        } else {
-          pane.classList.remove("active");
-        }
-      });
+  var currentStepIdx = 0;
+  var loopTimer = null;
+  var taskTimeout = null;
+
+  function setScreen(screenName) {
+    // Update active pane
+    panes.forEach(function (pane) {
+      pane.classList.toggle("active", pane.id === "pane-" + screenName);
     });
-  });
 
-  /* Interactive prompt chips */
-  document.querySelectorAll(".prompt-chip").forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var pane = chip.closest(".persona-pane");
-      if (!pane) return;
-      var input = pane.querySelector(".mini-demo-input");
-      var taskText = pane.querySelector(".task-label-text");
-      var inputVal = chip.getAttribute("data-input") || chip.textContent.trim();
-      var taskVal = chip.getAttribute("data-task") || inputVal;
+    // Update active step button
+    stepBtns.forEach(function (btn) {
+      btn.classList.toggle(
+        "active",
+        btn.getAttribute("data-screen") === screenName,
+      );
+    });
 
-      if (input) input.value = inputVal;
-      if (taskText) {
-        taskText.textContent = taskVal;
-        var taskItem = pane.querySelector(".capsule-interactive-task");
-        if (taskItem) taskItem.classList.remove("completed");
+    // Update descriptive caption
+    if (stepLabel && stepCaptions[screenName]) {
+      stepLabel.textContent = stepCaptions[screenName];
+    }
+
+    // Schedule task checkoff interaction
+    if (taskTimeout) {
+      clearTimeout(taskTimeout);
+      taskTimeout = null;
+    }
+
+    if (taskItem) {
+      if (screenName === "schedule") {
+        taskItem.classList.remove("checked");
+        taskTimeout = setTimeout(function () {
+          taskItem.classList.add("checked");
+        }, 850);
+      } else {
+        taskItem.classList.remove("checked");
       }
-    });
-  });
+    }
+  }
 
-  /* Capture button handler */
-  document.querySelectorAll(".mini-demo-submit-btn").forEach(function (btn) {
+  function advanceStep() {
+    currentStepIdx = (currentStepIdx + 1) % stepScreens.length;
+    setScreen(stepScreens[currentStepIdx]);
+  }
+
+  function startLoop() {
+    stopLoop();
+    loopTimer = setInterval(advanceStep, 3800);
+  }
+
+  function stopLoop() {
+    if (loopTimer) {
+      clearInterval(loopTimer);
+      loopTimer = null;
+    }
+  }
+
+  // Interactive buttons: allow user to click and inspect
+  stepBtns.forEach(function (btn, index) {
     btn.addEventListener("click", function () {
-      var pane = btn.closest(".persona-pane");
-      if (!pane) return;
-      var input = pane.querySelector(".mini-demo-input");
-      var taskText = pane.querySelector(".task-label-text");
-      var taskItem = pane.querySelector(".capsule-interactive-task");
-      if (!input || !taskText) return;
-
-      var val = input.value.trim();
-      if (!val) return;
-
-      taskText.textContent = val;
-      if (taskItem) {
-        taskItem.classList.remove("completed");
-        taskItem.style.transform = "scale(1.02)";
-        setTimeout(function () {
-          taskItem.style.transform = "";
-        }, 200);
-      }
+      stopLoop();
+      var targetScreen = btn.getAttribute("data-screen");
+      currentStepIdx = stepScreens.indexOf(targetScreen);
+      if (currentStepIdx === -1) currentStepIdx = index;
+      setScreen(targetScreen);
+      // Resume loop after 7 seconds of user inactivity
+      setTimeout(startLoop, 7000);
     });
   });
 
-  /* Allow enter key in demo input */
-  document.querySelectorAll(".mini-demo-input").forEach(function (inp) {
-    inp.addEventListener("keydown", function (e) {
-      if (e.key === "Enter") {
-        var pane = inp.closest(".persona-pane");
-        if (!pane) return;
-        var btn = pane.querySelector(".mini-demo-submit-btn");
-        if (btn) btn.click();
-      }
+  // Task item click to toggle checkmark manually
+  if (taskItem) {
+    taskItem.addEventListener("click", function () {
+      taskItem.classList.toggle("checked");
     });
-  });
+  }
 
-  /* Clickable interactive task checkbox (instant satisfaction) */
-  document
-    .querySelectorAll(".capsule-interactive-task")
-    .forEach(function (task) {
-      task.addEventListener("click", function () {
-        var isCompleted = task.classList.toggle("completed");
-        task.setAttribute("aria-checked", isCompleted ? "true" : "false");
+  // Start the demo loop
+  setScreen(stepScreens[0]);
+  startLoop();
+})();
+
+/* ─── PAGE 3: VERTICAL PERSONA CARD FLOW ─── */
+(function () {
+  var section = document.querySelector(".personas-cards-section");
+  var cards = section ? section.querySelectorAll(".persona-fade-card") : [];
+  if (!section || !cards.length) return;
+
+  var activeIndex = 0;
+  var ticking = false;
+  var boundaryJumping = false;
+  var nextPage = null;
+
+  function jumpToPage(target, keepSnapDisabled) {
+    var root = document.documentElement;
+    var previousBehavior = root.style.scrollBehavior;
+    var previousSnap = root.style.scrollSnapType;
+    root.style.scrollBehavior = "auto";
+    root.style.scrollSnapType = "none";
+    document.scrollingElement.scrollTop = target;
+    if (!keepSnapDisabled) {
+      window.requestAnimationFrame(function () {
+        root.style.scrollBehavior = previousBehavior;
+        root.style.scrollSnapType = previousSnap;
       });
-      task.addEventListener("keydown", function (e) {
-        if (e.key === " " || e.key === "Enter") {
-          e.preventDefault();
-          task.click();
-        }
-      });
-    });
+    }
+  }
 
-  /* Interactive audio memo toggle */
-  document.querySelectorAll(".capsule-audio-pill").forEach(function (pill) {
-    pill.addEventListener("click", function () {
-      pill.classList.toggle("playing");
+  function setActive(index) {
+    activeIndex = Math.max(0, Math.min(cards.length - 1, index));
+    cards.forEach(function (card, i) {
+      var isActive = i === activeIndex;
+      card.classList.toggle("active", isActive);
+      card.setAttribute("aria-hidden", String(!isActive));
     });
-  });
+  }
+
+  function updateFromScroll() {
+    var scrollableHeight = section.offsetHeight - window.innerHeight;
+    var distanceIntoSection = -section.getBoundingClientRect().top;
+    var progress =
+      scrollableHeight > 0
+        ? Math.max(0, Math.min(1, distanceIntoSection / scrollableHeight))
+        : 0;
+    var nextIndex =
+      progress === 0
+        ? 0
+        : progress >= 0.78
+          ? cards.length - 1
+          : Math.min(
+              cards.length - 2,
+              Math.ceil(progress * (cards.length - 1)),
+            );
+    setActive(nextIndex);
+
+    var sectionEnd =
+      section.offsetTop + section.offsetHeight - window.innerHeight;
+    if (
+      nextIndex === cards.length - 1 &&
+      nextPage &&
+      window.scrollY >= sectionEnd - 2 &&
+      !boundaryJumping
+    ) {
+      boundaryJumping = true;
+      jumpToPage(nextPage.offsetTop);
+    }
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      window.requestAnimationFrame(updateFromScroll);
+      ticking = true;
+    },
+    { passive: true },
+  );
+
+  nextPage = section.nextElementSibling;
+  window.addEventListener(
+    "wheel",
+    function (event) {
+      if (!nextPage || event.deltaY === 0) {
+        return;
+      }
+
+      var sectionStart = section.offsetTop;
+      var nextPageStart = nextPage.offsetTop;
+      var currentScroll = window.scrollY;
+      var sectionScrollDistance = section.offsetHeight - window.innerHeight;
+      var friendsRangeStart =
+        sectionStart + Math.max(0, sectionScrollDistance * 0.5);
+      var movingToNextPage =
+        event.deltaY > 0 &&
+        currentScroll >= friendsRangeStart &&
+        currentScroll < nextPageStart - 2;
+      var returningToFriends =
+        event.deltaY < 0 &&
+        currentScroll >= nextPageStart - 2 &&
+        currentScroll <= nextPageStart + 2;
+
+      if (!movingToNextPage && !returningToFriends) return;
+
+      event.preventDefault();
+      boundaryJumping = true;
+      if (movingToNextPage) {
+        document.documentElement.style.scrollSnapType = "y mandatory";
+      }
+      jumpToPage(
+        movingToNextPage
+          ? nextPageStart
+          : sectionStart + section.offsetHeight - window.innerHeight,
+        returningToFriends,
+      );
+    },
+    { passive: false, capture: true },
+  );
+
+  setActive(0);
 })();
 
 /* ─── GSAP ANIMATIONS ─── */
