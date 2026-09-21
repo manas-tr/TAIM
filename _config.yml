@@ -1,0 +1,7 @@
+url: "https://www.trytaim.com"
+plugins:
+  - jekyll-sitemap
+
+include:
+  - robots.txt
+  - sitemap.xml
