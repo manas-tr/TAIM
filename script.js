@@ -150,9 +150,9 @@
 
   var stepScreens = ["routing", "threads", "schedule"];
   var stepCaptions = {
-    routing: "AI Routing · Instant thought filing into living threads & tasks",
-    threads: "Living Threads · Collaborative marketing stream & intelligent copilot",
-    schedule: "Schedule Hub · Unified timeline, Google/Apple events & task checks",
+    routing: "Routing - thoughts into threads and tasks",
+    threads: "Threads - notes, ideas, and the stuff you keep forgetting",
+    schedule: "Schedule - what is next and when it is due",
   };
 
   var currentStepIdx = 0;
@@ -275,7 +275,10 @@
 
     // Distance scrolled into the sticky persona section
     var distanceIntoSection = -rect.top;
-    var progress = Math.max(0, Math.min(1, distanceIntoSection / scrollableHeight));
+    var progress = Math.max(
+      0,
+      Math.min(1, distanceIntoSection / scrollableHeight),
+    );
 
     // Evenly divide scroll progress across all 6 cards so each card has ample scroll duration:
     // Card 0 (Creatives): [0.00, 0.166)
@@ -284,7 +287,10 @@
     // Card 3 (Founders):  [0.500, 0.666)
     // Card 4 (Daily):     [0.666, 0.833)
     // Card 5 (Friends):   [0.833, 1.000]
-    var nextIndex = Math.min(cards.length - 1, Math.floor(progress * cards.length));
+    var nextIndex = Math.min(
+      cards.length - 1,
+      Math.floor(progress * cards.length),
+    );
     setActive(nextIndex);
 
     ticking = false;
@@ -295,7 +301,8 @@
       var targetIdx = parseInt(dot.getAttribute("data-target"), 10);
       if (isNaN(targetIdx)) return;
       var scrollableHeight = section.offsetHeight - window.innerHeight;
-      var targetScroll = section.offsetTop + (targetIdx / cards.length) * scrollableHeight + 10;
+      var targetScroll =
+        section.offsetTop + (targetIdx / cards.length) * scrollableHeight + 10;
       window.scrollTo({
         top: targetScroll,
         behavior: "smooth",
