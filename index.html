@@ -8,6 +8,39 @@
       name="description"
       content="Taim is for the thought you almost forgot. Capture it in the moment, keep the context, and bring it back when it matters."
     />
+    <meta
+      name="keywords"
+      content="Taim, voice notes, thought capture, personal assistant, living threads, iOS notes app, MCP, memory assistant"
+    />
+    <link rel="canonical" href="https://www.trytaim.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.trytaim.com/" />
+    <meta
+      property="og:title"
+      content="Taim : your entry point for every thought"
+    />
+    <meta
+      property="og:description"
+      content="Taim is for the thought you almost forgot. Capture it in the moment, keep the context, and bring it back when it matters."
+    />
+    <meta
+      property="og:image"
+      content="https://www.trytaim.com/assets/taim-og.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@trytaim" />
+    <meta
+      name="twitter:title"
+      content="Taim : your entry point for every thought"
+    />
+    <meta
+      name="twitter:description"
+      content="Taim is for the thought you almost forgot. Capture it in the moment, keep the context, and bring it back when it matters."
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.trytaim.com/assets/taim-og.png"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,6 +49,28 @@
     />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" type="image/svg+xml" href="assets/taim-logo.svg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Taim",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "iOS, macOS",
+        "description": "Taim captures fleeting thoughts, keeps context intact, and routes ideas into living threads, schedules, and MCP-connected workflows.",
+        "url": "https://www.trytaim.com/",
+        "image": "https://www.trytaim.com/assets/taim-og.png",
+        "downloadUrl": "https://apps.apple.com/us/app/taim-your-personal-assistant/id6757834821",
+        "sameAs": [
+          "https://x.com/trytaim",
+          "https://www.instagram.com/trytaim/"
+        ],
+        "publisher": {
+          "@type": "Organization",
+          "name": "Kyrosphere Inc.",
+          "url": "https://www.trytaim.com/"
+        }
+      }
+    </script>
   </head>
   <body>
     <!-- INTRO -->
@@ -24,7 +79,13 @@
       <div class="intro-content">
         <div class="intro-mark-wrap">
           <div class="intro-glow"></div>
-          <img src="assets/taim-logo.svg" alt="Taim" class="intro-logo" />
+          <img
+            src="assets/taim-logo.svg"
+            alt="Taim"
+            class="intro-logo"
+            width="58"
+            height="58"
+          />
         </div>
         <div class="intro-text">
           <span class="intro-brand">Taim</span>
@@ -39,7 +100,13 @@
     <header class="site-header">
       <div class="nav-pill">
         <a class="brand" href="index.html" aria-label="Taim home">
-          <img src="assets/taim-logo.svg" alt="Taim Logo" class="brand-logo" />
+          <img
+            src="assets/taim-logo.svg"
+            alt="Taim Logo"
+            class="brand-logo"
+            width="24"
+            height="24"
+          />
           Taim
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
@@ -305,7 +372,7 @@
                 Sync with Me → Schedule
               </div>
               <div class="flow-mark-badge">
-                <img src="assets/taim-logo.svg" alt="Taim" />
+                <img src="assets/taim-logo.svg" alt="Taim" width="28" height="28" />
               </div>
             </div>
 
@@ -500,7 +567,7 @@
                       <div class="thread-main-card">
                         <div class="thread-title-row">
                           <span class="thread-bullet-dot"></span>
-                          <h4 class="thread-heading">Launch notes</h4>
+                          <h3 class="thread-heading">Launch notes</h3>
                           <span class="thread-edit-icon">&#9998;</span>
                         </div>
                         <p class="thread-desc">
@@ -1027,7 +1094,7 @@
             <!-- Brand column -->
             <div class="footer-brand-col">
               <div class="footer-logo">
-                <img src="assets/taim-logo.svg" alt="Taim" />
+                <img src="assets/taim-logo.svg" alt="Taim" width="28" height="28" />
                 Taim
               </div>
               <p class="footer-tagline hand">
@@ -1056,7 +1123,9 @@
 
             <!-- Use Cases -->
             <div class="footer-col">
-              <h4 class="footer-col-head">Use Cases</h4>
+              <div class="footer-col-head" role="heading" aria-level="2">
+                Use Cases
+              </div>
               <ul>
                 <li>
                   <a href="designers.html"
@@ -1082,7 +1151,9 @@
 
             <!-- Product -->
             <div class="footer-col">
-              <h4 class="footer-col-head">Product</h4>
+              <div class="footer-col-head" role="heading" aria-level="2">
+                Product
+              </div>
               <ul>
                 <li><a href="#how">Voice Capture</a></li>
                 <li><a href="#how">Living Threads</a></li>
@@ -1097,7 +1168,9 @@
 
             <!-- Privacy & Promise -->
             <div class="footer-col">
-              <h4 class="footer-col-head">Privacy &amp; Trust</h4>
+              <div class="footer-col-head" role="heading" aria-level="2">
+                Privacy &amp; Trust
+              </div>
               <ul>
                 <li><a href="#manifesto">Our Promise</a></li>
                 <li><a href="#manifesto">Zero Audio Retention</a></li>
@@ -1112,11 +1185,14 @@
 
             <!-- Company -->
             <div class="footer-col">
-              <h4 class="footer-col-head">Company</h4>
+              <div class="footer-col-head" role="heading" aria-level="2">
+                Company
+              </div>
               <ul>
                 <li><a href="https://www.trytaim.com/">About Kyrosphere</a></li>
                 <li><a href="https://www.trytaim.com/blog">Blogs</a></li>
                 <li><a href="https://www.trytaim.com/blog">Changelog</a></li>
+                <li><a href="https://x.com/trytaim">X</a></li>
                 <li>
                   <a href="https://www.instagram.com/trytaim/">Instagram</a>
                 </li>
